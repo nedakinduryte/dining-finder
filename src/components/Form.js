@@ -1,6 +1,6 @@
 import React from 'react';
 //import queryString from 'query-string';
-import Autocomplete from './Autocomplete';
+import LocationAutosuggest from './LocationAutosuggest'
 
 
 
@@ -10,6 +10,13 @@ import Autocomplete from './Autocomplete';
 // pass in api_call as prop
 
 class Form extends React.Component {
+	state = {
+		cityId: undefined
+	};
+
+	getCityId = value => {
+		this.setState({ cityId: value })
+	};
 
 	//handleSubmit = e => {
 		//e.preventDefault();
@@ -24,11 +31,13 @@ class Form extends React.Component {
 				<form /*onSubmit={  }*/>
 					<label htmlFor="location">
 						Location
-						<Autocomplete />
+						<LocationAutosuggest 
+							getCityId={this.getCityId}
+						/>
 					</label>
 					<label htmlFor="food">
 						Food Mood
-						<Autocomplete />
+						
 					</label>
 					<button type="submit">Search</button>
 				</form>

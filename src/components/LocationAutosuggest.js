@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-class Autocomplete extends React.Component {
+class LocationAutosuggest extends React.Component {
 	constructor() {
 		super();
 
@@ -14,7 +14,7 @@ class Autocomplete extends React.Component {
 			suggestions: []
 		};
 
-		this.debouncedLoadSuggestions = _.debounce(this.loadSuggestions, 1000); // 1000ms is chosen for demo purposes only.
+		this.debouncedLoadSuggestions = _.debounce(this.loadSuggestions, 100); // 1000ms is chosen for demo purposes only.
 	};
 
 	loadSuggestions = async value => {
@@ -41,6 +41,7 @@ class Autocomplete extends React.Component {
 		this.setState({
 		   	value: newValue
 		});
+		this.props.getCityId(this.state.suggestions);
 	};
 
 	// Autosuggest will call this function every time you need to update suggestions.
@@ -74,4 +75,4 @@ class Autocomplete extends React.Component {
 }
 
 
-export default Autocomplete;
+export default LocationAutosuggest;
