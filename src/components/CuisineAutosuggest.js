@@ -5,13 +5,16 @@ import _ from 'lodash';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-class LocationAutosuggest extends React.Component {
-	constructor(props) {
-		super(props);
+class CuisisneAutosuggest extends React.Component {
+	constructor() {
+		super();
+
 		this.state = {
 			value: "",
-			suggestions: []
+			suggestions: [],
+			cityId: this.props.cityId
 		};
+
 		this.debouncedLoadSuggestions = _.debounce(this.loadSuggestions);
 	};
 
@@ -22,23 +25,24 @@ class LocationAutosuggest extends React.Component {
 	  	if (inputLength < 2) {
 	  		return [];
 	  	} else {
-			const api_call = await fetch(`https://developers.zomato.com/api/v2.1/cities?q=${value}`, 
+			const api_call = await fetch(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${this.state.cityId}`, 
 										 { headers: { 'Content-Type': 'application/json', "user-key": API_KEY }});
 			const data = await api_call.json();
-			this.setState({ suggestions: data.location_suggestions });
+			this.setState({ suggestions: data.cuisines });
 		};
 	};
 
-	getSuggestionValue = suggestion => suggestion.name;
+	getSuggestionValue = suggestion => suggestion.cuisine.cuisine_name;
 
 	renderSuggestion = suggestion => {
-		return <div>{ suggestion.name }</div>
+		return <div>{ suggestion.cuisine.cuisine_name }</div>
 	};
 
 	onChange = (event, { newValue }) => {
 		this.setState({
 		   	value: newValue
 		});
+		this.props.getCityId(this.state.suggestions);
 	};
 
 	// Autosuggest will call this function every time you need to update suggestions.
@@ -47,13 +51,10 @@ class LocationAutosuggest extends React.Component {
 	};
 
 	// Autosuggest will call this function every time you need to clear suggestions.
-	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
-
-	handleSelection = e => {
-		const selection = this.state.suggestions.filter(s => s.name === e.target.innerHTML);
-		if (selection.length > 0 && selection[0].hasOwnProperty("id")) {
-			this.props.handleLocationSelection(selection[0].id);
-		}
+	onSuggestionsClearRequested = () => {
+		this.setState({
+			suggestions: []
+		});
 	};
 
 	render() {
@@ -63,7 +64,6 @@ class LocationAutosuggest extends React.Component {
 		        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
 		        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 		        getSuggestionValue={this.getSuggestionValue}
-		        onSuggestionSelected={this.handleSelection}
 		        renderSuggestion={this.renderSuggestion}
 		        inputProps={{
 				    placeholder: 'Type a city',
@@ -76,4 +76,4 @@ class LocationAutosuggest extends React.Component {
 }
 
 
-export default LocationAutosuggest;
+export default CuisisneAutosuggest;

@@ -16,7 +16,7 @@ class Info extends React.Component {
   	}
 
   	getRestaurants = async () => {
-	    const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_type=city&q=${this.state.location}&count=5&sort=rating&order=desc`, {headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
+	    const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_type=city&q=${this.state.location}&count=10&sort=rating&order=desc`, {headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
 	    
 	    const data = await api_call.json();
 	    this.setState({ restaurants: data.restaurants })
