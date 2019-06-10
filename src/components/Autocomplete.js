@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-class LocationAutosuggest extends React.Component {
+class Autocomplete extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -50,6 +50,7 @@ class LocationAutosuggest extends React.Component {
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
 	handleSelection = e => {
+		e.preventDefault();
 		const selection = this.state.suggestions.filter(s => s.name === e.target.innerHTML);
 		if (selection.length > 0 && selection[0].hasOwnProperty("id")) {
 			this.props.handleLocationSelection(selection[0].id);
@@ -76,4 +77,4 @@ class LocationAutosuggest extends React.Component {
 }
 
 
-export default LocationAutosuggest;
+export default Autocomplete;

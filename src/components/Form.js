@@ -1,18 +1,19 @@
 import React from 'react';
 //import queryString from 'query-string';
-import LocationAutosuggest from './LocationAutosuggest';
-//import CuisineAutosuggest from './CuisineAutosuggest';
-
+import Autocomplete from './Autocomplete';
+import ClickAway from './Dropdown';
 
 
 class Form extends React.Component {
-	state = {
-		locationId: null
+	constructor() {
+		super();
+		this.state = {
+			locationId: null
+		};
 	};
 
-	handleLocationSelection = locationId => {
-		this.setState({ locationId: locationId });
-	};
+	handleLocationSelection = locationId => this.setState({ locationId });
+
 
 	//handleSubmit = e => {
 		//e.preventDefault();
@@ -27,12 +28,13 @@ class Form extends React.Component {
 				<form /*onSubmit={  }*/>
 					<label htmlFor="location">
 						Location
-						<LocationAutosuggest 
+						<Autocomplete 
 							handleLocationSelection={this.handleLocationSelection}
 						/>
 					</label>
 					<label htmlFor="food">
 						Food Mood
+						{ this.state.locationId ? <ClickAway locationId={this.state.locationId} /> : null }
 					</label>
 					<button type="submit">Search</button>
 				</form>
