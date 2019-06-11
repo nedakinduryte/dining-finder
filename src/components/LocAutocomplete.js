@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-class Autocomplete extends React.Component {
+class LocAutocomplete extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -35,16 +35,10 @@ class Autocomplete extends React.Component {
 		return <div>{ suggestion.name }</div>
 	};
 
-	onChange = (event, { newValue }) => {
-		this.setState({
-		   	value: newValue
-		});
-	};
+	onChange = (event, { newValue }) => this.setState({ value: newValue });
 
 	// Autosuggest will call this function every time you need to update suggestions.
-	onSuggestionsFetchRequested = ({ value }) => {
-	    this.debouncedLoadSuggestions(value);
-	};
+	onSuggestionsFetchRequested = ({ value }) => this.debouncedLoadSuggestions(value);
 
 	// Autosuggest will call this function every time you need to clear suggestions.
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
@@ -77,4 +71,4 @@ class Autocomplete extends React.Component {
 }
 
 
-export default Autocomplete;
+export default LocAutocomplete;

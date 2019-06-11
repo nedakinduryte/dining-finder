@@ -1,7 +1,7 @@
 import React from 'react';
 //import queryString from 'query-string';
-import Autocomplete from './Autocomplete';
-import ClickAway from './Dropdown';
+import LocAutocomplete from './LocAutocomplete';
+import CuisineAutocomplete from './CuisineAutocomplete';
 
 
 class Form extends React.Component {
@@ -28,13 +28,13 @@ class Form extends React.Component {
 				<form /*onSubmit={  }*/>
 					<label htmlFor="location">
 						Location
-						<Autocomplete 
+						<LocAutocomplete 
 							handleLocationSelection={this.handleLocationSelection}
 						/>
 					</label>
 					<label htmlFor="food">
 						Food Mood
-						{ this.state.locationId ? <ClickAway locationId={this.state.locationId} /> : null }
+						{ this.state.locationId ? <CuisineAutocomplete locationId={this.state.locationId} /> : null }
 					</label>
 					<button type="submit">Search</button>
 				</form>
