@@ -10,6 +10,7 @@ class CuisineAutocomplete extends React.Component {
 		this.state = {
 			value: "",
 			suggestions: [],
+			cuisines: [],
 			locationId: this.props.locationId
 		};
 	};
@@ -19,7 +20,7 @@ class CuisineAutocomplete extends React.Component {
 										{ headers: { 'Content-Type': 'application/json', "user-key": API_KEY }});
 
 		const data = await api_call.json();
-		this.setState({ suggestions: data.cuisines });
+		this.setState({ cuisines: data.cuisines });
 		console.log(data);
 	};
 
@@ -27,9 +28,9 @@ class CuisineAutocomplete extends React.Component {
 	  	const inputValue = value.trim().toLowerCase();
 	  	const inputLength = inputValue.length;
 
-	  	return inputLength === 0 ? [] : this.state.suggestions.filter(s =>
+	  	return inputLength === 0 ? [] : this.state.cuisines.filter(s => 
 		    s.cuisine.cuisine_name.toLowerCase().slice(0, inputLength) === inputValue
-		);
+	  	);
 	};
 
 	getSuggestionValue = suggestion => suggestion.cuisine.cuisine_name;
@@ -41,7 +42,7 @@ class CuisineAutocomplete extends React.Component {
 	onChange = (event, { newValue }) => this.setState({ value: newValue });
 
 	// Autosuggest will call this function every time you need to update suggestions.
-	onSuggestionsFetchRequested = ({ value }) => this.getSuggestions(value);
+	onSuggestionsFetchRequested = ({ value }) => this.setState({ suggestions: this.getSuggestions(value) });
 
 	// Autosuggest will call this function every time you need to clear suggestions.
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
