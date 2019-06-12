@@ -47,6 +47,15 @@ class CuisineAutocomplete extends React.Component {
 	// Autosuggest will call this function every time you need to clear suggestions.
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
+	// getting cuisine id.
+	handleSelection = e => {
+		e.preventDefault();
+		const selection = this.state.suggestions.filter(s => s.cuisine.cuisine_name === e.target.innerHTML);
+		if (selection.length > 0 && selection[0].hasOwnProperty("cuisine_id")) {
+			this.props.handleCuisineSelection(selection[0].cuisine_id);
+		};
+	};
+
 	render() {
 		return (
 			<Autosuggest
@@ -54,9 +63,10 @@ class CuisineAutocomplete extends React.Component {
 		        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
 		        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 		        getSuggestionValue={this.getSuggestionValue}
+		        onSuggestionSelected={this.handleSelection}
 		        renderSuggestion={this.renderSuggestion}
 		        inputProps={{
-				    placeholder: 'Type a city',
+				    placeholder: 'Type a cuisine',
 				    value: this.state.value,
 				    onChange: this.onChange
 				}}

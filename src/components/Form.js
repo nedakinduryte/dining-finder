@@ -8,11 +8,14 @@ class Form extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			locationId: null
+			locationId: null,
+			cuisineId: null
 		};
 	};
 
 	handleLocationSelection = locationId => this.setState({ locationId });
+
+	handleCuisineSelection = cuisineId => this.setState({ cuisineId });
 
 
 	//handleSubmit = e => {
@@ -34,7 +37,12 @@ class Form extends React.Component {
 					</label>
 					<label htmlFor="food">
 						Food Mood
-						{ this.state.locationId ? <CuisineAutocomplete locationId={this.state.locationId} /> : null }
+						{ this.state.locationId ? 
+							<CuisineAutocomplete 
+								locationId={this.state.locationId}
+								handleCuisineSelection={this.handleCuisineSelection}
+							/>
+						: null }
 					</label>
 					<button type="submit">Search</button>
 				</form>

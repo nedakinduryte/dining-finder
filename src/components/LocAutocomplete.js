@@ -43,12 +43,13 @@ class LocAutocomplete extends React.Component {
 	// Autosuggest will call this function every time you need to clear suggestions.
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
+	// Getting city id.
 	handleSelection = e => {
 		e.preventDefault();
 		const selection = this.state.suggestions.filter(s => s.name === e.target.innerHTML);
 		if (selection.length > 0 && selection[0].hasOwnProperty("id")) {
 			this.props.handleLocationSelection(selection[0].id);
-		}
+		};
 	};
 
 	render() {
