@@ -1,8 +1,80 @@
+
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import Popper from '@material-ui/core/Popper';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
+
+const styles = createStyles({
+	root: {
+	    height: 250,
+	    flexGrow: 1,
+	    padding: '12px'
+	},
+	container: {
+	    position: 'relative',
+	},
+	suggestionsContainerOpen: {
+	    position: 'absolute',
+	    zIndex: 1,
+	    marginTop: '24px',
+	    left: 0,
+	    right: 0,
+	},
+	suggestion: {
+	    display: 'block',
+	},
+	suggestionsList: {
+	    margin: 0,
+	    padding: 0,
+	    listStyleType: 'none',
+	},
+});
+
+function renderSuggestion(suggestion, { query, isHighlighted }){
+	const matches = match(suggestion.cuisine.cuisine_name, query);
+	const parts = parse(suggestion.cuisine.cuisine_name, matches);
+
+	return (
+	    <MenuItem selected={isHighlighted} component="div">
+	      	<div>
+	        	{parts.map(part => (
+	          		<span key={part.text} style={{ fontWeight: part.highlight ? 500 : 400 }}>
+	            		{part.text}
+	          		</span>
+	        	))}
+	      	</div>
+	    </MenuItem>
+	);
+};
+
+
+function renderInputComponent(inputProps){
+  	const { classes, inputRef = () => {}, ref, ...other } = inputProps;
+
+	return (
+	    <TextField
+	      	fullWidth
+	      	InputProps={{
+		        inputRef: node => {
+		          	ref(node);
+		          	inputRef(node);
+		        },
+		        classes: {
+		          	input: classes.input,
+		        },
+	      	}}
+	      	{...other}
+	    />
+	);
+};
 
 class Cuisine extends React.Component {
 	constructor(props) {
@@ -55,23 +127,41 @@ class Cuisine extends React.Component {
 	};
 
 	render() {
+		const classes = this.props.classes;
 		return (
-			<Autosuggest
-		        suggestions={this.state.suggestions}
-		        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-		        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-		        getSuggestionValue={this.getSuggestionValue}
-		        onSuggestionSelected={this.handleSelection}
-		        renderSuggestion={this.renderSuggestion}
-		        inputProps={{
-				    placeholder: 'Type a cuisine',
-				    value: this.state.value,
-				    onChange: this.onChange
-				}}
-		    />
+			<div className={classes.root}>
+				<Autosuggest
+			        suggestions={this.state.suggestions}
+			        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+			        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+			        getSuggestionValue={this.getSuggestionValue}
+			        onSuggestionSelected={this.handleSelection}
+			        renderSuggestion={this.renderSuggestion}
+			        renderInputComponent={renderInputComponent}
+			        inputProps={{
+			        	classes,
+				        id: 'react-autosuggest-simple',
+				        label: 'Cuisine',
+					    placeholder: 'Type a cuisine',
+					    value: this.state.value,
+					    onChange: this.onChange
+					}}
+					theme={{
+			          	container: classes.container,
+			          	suggestionsContainerOpen: classes.suggestionsContainerOpen,
+			          	suggestionsList: classes.suggestionsList,
+			          	suggestion: classes.suggestion,
+			        }}
+			        renderSuggestionsContainer={options => (
+			          	<Paper {...options.containerProps} square>
+			            	{options.children}
+			          	</Paper>
+			        )}
+			    />
+			</div>
 		)
 	}	
 };
 
 
-export default Cuisine;
+export default withStyles(styles)(Cuisine);

@@ -30,13 +30,10 @@ class Search extends React.Component {
 				<Location 
 					handleLocationSelection={this.handleLocationSelection}
 				/>
-				Cuisine
-				{ this.state.locationId ? 
-					<Cuisine
-						locationId={this.state.locationId}
-						handleCuisineSelection={this.handleCuisineSelection}
-					/>
-				: null }
+				<Cuisine
+					locationId={this.state.locationId}
+					handleCuisineSelection={this.handleCuisineSelection}
+				/>
 				<button type="submit">Search</button>
 			</React.Fragment>
 		)

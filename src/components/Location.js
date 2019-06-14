@@ -42,8 +42,6 @@ function renderSuggestion(suggestion, { query, isHighlighted }){
 	const matches = match(suggestion.name, query);
 	const parts = parse(suggestion.name, matches);
 
-	debugger;
-
 	return (
 	    <MenuItem selected={isHighlighted} component="div">
 	      	<div>
@@ -86,7 +84,7 @@ class Location extends React.Component {
 			value: "",
 			suggestions: []
 		};
-		
+
 		this.debouncedLoadSuggestions = _.debounce(this.loadSuggestions, 200);
 	};
 
@@ -94,13 +92,13 @@ class Location extends React.Component {
 	  	const inputValue = value.trim().toLowerCase();
 	  	const inputLength = inputValue.length;
 
-	  	if (inputLength < 2) {
-	  		return [];
-	  	} else {
-			const api_call = await fetch(`https://developers.zomato.com/api/v2.1/cities?q=${value}`, 
+	  	if (inputLength > 2) {
+	  		const api_call = await fetch(`https://developers.zomato.com/api/v2.1/cities?q=${value}`, 
 										 { headers: { 'Content-Type': 'application/json', "user-key": API_KEY }});
 			const data = await api_call.json();
 			this.setState({ suggestions: data.location_suggestions });
+	  	} else {
+			return [];
 		};
 	};
 
