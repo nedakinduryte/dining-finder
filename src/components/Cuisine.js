@@ -4,7 +4,7 @@ import Autosuggest from 'react-autosuggest';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-class CuisineAutocomplete extends React.Component {
+class Cuisine extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,7 +21,6 @@ class CuisineAutocomplete extends React.Component {
 
 		const data = await api_call.json();
 		this.setState({ cuisines: data.cuisines });
-		console.log(data);
 	};
 
 	getSuggestions = value => {
@@ -49,10 +48,9 @@ class CuisineAutocomplete extends React.Component {
 
 	// getting cuisine id.
 	handleSelection = e => {
-		e.preventDefault();
 		const selection = this.state.suggestions.filter(s => s.cuisine.cuisine_name === e.target.innerHTML);
-		if (selection.length > 0 && selection[0].hasOwnProperty("cuisine_id")) {
-			this.props.handleCuisineSelection(selection[0].cuisine_id);
+		if (selection.length > 0 && selection[0].cuisine.hasOwnProperty("cuisine_id")) {
+			this.props.handleCuisineSelection(selection[0].cuisine.cuisine_id);
 		};
 	};
 
@@ -76,4 +74,4 @@ class CuisineAutocomplete extends React.Component {
 };
 
 
-export default CuisineAutocomplete;
+export default Cuisine;

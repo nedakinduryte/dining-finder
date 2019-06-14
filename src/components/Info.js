@@ -34,6 +34,8 @@ class Info extends React.Component {
 
 	render() {
 		const restaurant = this.selectRestaurant();
+
+
 		console.log(restaurant);
 
 		return(
