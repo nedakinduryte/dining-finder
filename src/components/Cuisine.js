@@ -6,7 +6,6 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 
 
@@ -57,7 +56,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }){
 
 
 function renderInputComponent(inputProps){
-  	const { classes, inputRef = () => {}, ref, ...other } = inputProps;
+  	const { classes, inputRef = () => {}, ref, locationId, ...other } = inputProps;
 
 	return (
 	    <TextField
@@ -81,34 +80,34 @@ class Cuisine extends React.Component {
 		super(props);
 		this.state = {
 			value: "",
-			suggestions: [],
-			cuisines: [],
-			locationId: this.props.locationId
+			suggestions: []
 		};
 	};
 
-	componentDidMount = async value => {
-		const api_call = await fetch(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${this.state.locationId}`, 
-										{ headers: { 'Content-Type': 'application/json', "user-key": API_KEY }});
-
-		const data = await api_call.json();
-		this.setState({ cuisines: data.cuisines });
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.locationId !== this.props.locationId && this.props.locationId !== null) {
+			this.loadSuggestion();
+		};
 	};
+
+	async loadSuggestion() {
+		const response = await fetch(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${this.props.locationId}`, 
+				  					 { headers: { 'Content-Type': 'application/json', "user-key": API_KEY } } );
+		const data = await response.json();
+		console.log(data);
+		this.setState({ suggestions: data.cuisines });
+	}
 
 	getSuggestions = value => {
 	  	const inputValue = value.trim().toLowerCase();
 	  	const inputLength = inputValue.length;
 
-	  	return inputLength === 0 ? [] : this.state.cuisines.filter(s => 
+	  	return inputLength === 0 ? [] : this.state.suggestions.filter(s => 
 		    s.cuisine.cuisine_name.toLowerCase().slice(0, inputLength) === inputValue
 	  	);
 	};
 
 	getSuggestionValue = suggestion => suggestion.cuisine.cuisine_name;
-
-	renderSuggestion = suggestion => {
-		return <div>{ suggestion.cuisine.cuisine_name }</div>
-	};
 
 	onChange = (event, { newValue }) => this.setState({ value: newValue });
 
@@ -119,11 +118,8 @@ class Cuisine extends React.Component {
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
 	// getting cuisine id.
-	handleSelection = e => {
-		const selection = this.state.suggestions.filter(s => s.cuisine.cuisine_name === e.target.innerHTML);
-		if (selection.length > 0 && selection[0].cuisine.hasOwnProperty("cuisine_id")) {
-			this.props.handleCuisineSelection(selection[0].cuisine.cuisine_id);
-		};
+	handleSelection = (event, { suggestion }) => {
+		this.props.handleCuisineSelection(suggestion.cuisine.cuisine_id);
 	};
 
 	render() {
@@ -136,7 +132,7 @@ class Cuisine extends React.Component {
 			        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 			        getSuggestionValue={this.getSuggestionValue}
 			        onSuggestionSelected={this.handleSelection}
-			        renderSuggestion={this.renderSuggestion}
+			        renderSuggestion={renderSuggestion}
 			        renderInputComponent={renderInputComponent}
 			        inputProps={{
 			        	classes,
@@ -144,7 +140,8 @@ class Cuisine extends React.Component {
 				        label: 'Cuisine',
 					    placeholder: 'Type a cuisine',
 					    value: this.state.value,
-					    onChange: this.onChange
+					    onChange: this.onChange,
+					    locationId: this.props.locationId
 					}}
 					theme={{
 			          	container: classes.container,

@@ -13,7 +13,9 @@ class Search extends React.Component {
 		};
 	};
 
-	handleLocationSelection = locationId => this.setState({ locationId });
+	handleLocationSelection = locationId => { 
+		this.setState({ locationId });
+	};
 
 	handleCuisineSelection = cuisineId => this.setState({ cuisineId });
 

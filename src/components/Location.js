@@ -6,7 +6,6 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
@@ -114,12 +113,8 @@ class Location extends React.Component {
 	onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
 	// Getting city id.
-	handleSelection = e => {
-		e.preventDefault();
-		const selection = this.state.suggestions.filter(s => s.name === e.target.innerHTML);
-		if (selection.length > 0 && selection[0].hasOwnProperty("id")) {
-			this.props.handleLocationSelection(selection[0].id);
-		};
+	handleSelection = (event, { suggestion }) => {
+		this.props.handleLocationSelection(suggestion.id);
 	};
 
 	render() {
