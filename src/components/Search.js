@@ -2,11 +2,22 @@ import React from 'react';
 //import queryString from 'query-string';
 import Location from './Location';
 import Cuisine from './Cuisine';
+import { withStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
 
+
+const styles = {
+  	button: {
+    	margin: '20px',
+  	},
+  	input: {
+    	display: 'none',
+  	},
+};
 
 class Search extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			locationId: null,
 			cuisineId: null
@@ -27,6 +38,7 @@ class Search extends React.Component {
 	//}
 
 	render() {
+		const classes = this.props.classes;
 		return (
 			<React.Fragment>
 				<Location 
@@ -36,11 +48,13 @@ class Search extends React.Component {
 					locationId={this.state.locationId}
 					handleCuisineSelection={this.handleCuisineSelection}
 				/>
-				<button type="submit">Search</button>
+				<Button variant="contained" className={classes.button}>
+			        Search
+			    </Button>
 			</React.Fragment>
 		)
 	}
 }
 
 
-export default Search;
+export default withStyles (styles)(Search);
