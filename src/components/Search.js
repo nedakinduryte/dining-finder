@@ -1,5 +1,5 @@
 import React from 'react';
-//import queryString from 'query-string';
+import queryString from 'query-string';
 import Location from './Location';
 import Cuisine from './Cuisine';
 import { withStyles } from '@material-ui/styles';
@@ -30,12 +30,12 @@ class Search extends React.Component {
 
 	handleCuisineSelection = cuisineId => this.setState({ cuisineId });
 
-	//handleSubmit = e => {
-		//e.preventDefault();
-		//const location = e.target.location.value;
-		//const query = queryString.stringify({ location: location });
-		//this.props.history.push(`/restaurants?${ query }`);
-	//}
+	handleSubmit = e => {
+		e.preventDefault();
+		const query = queryString.stringify({ entity_id: this.state.locationId, cuisines: this.state.cuisineId });
+		console.log(query);
+		this.props.history.push(`search?${ query }&entity_type=city&count=5&sort=rating&order=desc`)
+	};
 
 	render() {
 		const classes = this.props.classes;
@@ -48,7 +48,7 @@ class Search extends React.Component {
 					locationId={this.state.locationId}
 					handleCuisineSelection={this.handleCuisineSelection}
 				/>
-				<Button variant="contained" className={classes.button}>
+				<Button variant="contained" className={classes.button} onClick={this.handleSubmit}>
 			        Search
 			    </Button>
 			</React.Fragment>

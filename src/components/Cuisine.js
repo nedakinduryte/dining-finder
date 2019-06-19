@@ -57,10 +57,11 @@ function renderSuggestion(suggestion, { query, isHighlighted }){
 
 function renderInputComponent(inputProps){
   	const { classes, inputRef = () => {}, ref, locationId, ...other } = inputProps;
-
+  	
 	return (
 	    <TextField
 	      	fullWidth
+	      	disabled={locationId === null}
 	      	InputProps={{
 		        inputRef: node => {
 		          	ref(node);
