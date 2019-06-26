@@ -1,14 +1,10 @@
 import React from 'react';
-import queryString from 'query-string';
 
 
-class Restaurant extends React.Component {
-	state = {
-    	restaurants: []
-  	}  	
+class Restaurant extends React.Component { 	
 
 	selectRestaurant = () => {
-		const restaurants = this.state.restaurants;
+		const restaurants = this.props.restaurants;
 		if (restaurants.length > 0) {
 			return restaurants[Math.floor(Math.random()*restaurants.length)].restaurant;
 		} else {
