@@ -21,17 +21,21 @@ class Result extends React.Component {
 	};
 
 	async getRestaurants() {
-	    const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=${ this.state.locationId }&entity_type=city&count=10&cuisines=${ this.state.cuisineId }&sort=rating&order=desc`,
-	    							{headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
+		if (this.state.locationId !== null && this.state.cuisineId !== null) {
+			const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=${ this.state.locationId }&entity_type=city&count=10&cuisines=${ this.state.cuisineId }&sort=rating&order=desc`,
+	    								{headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
 	    
-	    const data = await api_call.json();
-	    this.setState({ restaurants: data.restaurants })
-	    console.log(this.state.restaurants);
+		    const data = await api_call.json();
+		    this.setState({ restaurants: data.restaurants })
+		    console.log(this.state.restaurants);
+		}
 	 };
 
 	render() {
 		return(
-			<Restaurant />
+			<Restaurant
+				restaurants={this.state.restaurants}
+			/>
 		)
 	}
 }
