@@ -32,9 +32,9 @@ class Search extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const query = queryString.stringify({ entity_id: this.state.locationId, cuisines: this.state.cuisineId });
+		const query = queryString.stringify({ location: this.state.locationId, cuisine: this.state.cuisineId });
 		console.log(query);
-		this.props.history.push(`search?${ query }&entity_type=city&count=5&sort=rating&order=desc`)
+		this.props.history.push(`/restaurants?${query}`)
 	};
 
 	render() {
@@ -57,4 +57,4 @@ class Search extends React.Component {
 }
 
 
-export default withStyles (styles)(Search);
+export default withStyles(styles)(Search);
