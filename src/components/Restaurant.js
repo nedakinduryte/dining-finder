@@ -2,21 +2,10 @@ import React from 'react';
 import queryString from 'query-string';
 
 
-const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
-
 class Restaurant extends React.Component {
 	state = {
     	restaurants: []
-  	}
-
-  	getRestaurants = async () => {
-	    const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=${ this.props.locationId }&entity_type=city&count=5&cuisines=${ this.props.cuisineId }&sort=rating&order=desc`,
-	    							{headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
-	    
-	    const data = await api_call.json();
-	    this.setState({ restaurants: data.restaurants })
-	    console.log(this.state.restaurants);
-	 };
+  	}  	
 
 	selectRestaurant = () => {
 		const restaurants = this.state.restaurants;
@@ -29,8 +18,6 @@ class Restaurant extends React.Component {
 
 	render() {
 		const restaurant = this.selectRestaurant();
-
-		console.log(restaurant);
 
 		return(
 			<div>
