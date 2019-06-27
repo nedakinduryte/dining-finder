@@ -24,11 +24,12 @@ class Restaurant extends React.Component {
 						<p>{ restaurant.cuisines } Cuisine</p>
 						<p>User rating: {" "}
 							<span style={{ color:`#${restaurant.user_rating.rating_color}` }}>
-								{ restaurant.user_rating.rating_text } ({ restaurant.user_rating.aggregate_rating })
+								{ restaurant.user_rating.rating_text } ({ restaurant.user_rating.aggregate_rating } / 5)
 							</span>
 						</p>
 						<a href={ restaurant.menu_url }>Menu</a>
-						<p>Price range: { restaurant.currency.repeat(restaurant.price_range) }</p>
+						
+						<p>Average cost for two: { restaurant.average_cost_for_two }{ restaurant.currency }</p>
 						<p>Address:<br/>
 							{ restaurant.location.locality }<br/>
 							{ restaurant.location.zipcode }<br/>
