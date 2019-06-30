@@ -1,9 +1,15 @@
 import React from 'react';
 import Restaurant from './Restaurant';
 import queryString from 'query-string';
+import MapContainer from './MapContainer';
 
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
+
+const divStyle = {
+	display: 'flex',
+    flexDirection: 'row'
+};
 
 class Result extends React.Component {
 	state = {
@@ -33,9 +39,12 @@ class Result extends React.Component {
 
 	render() {
 		return(
-			<Restaurant
-				restaurants={this.state.restaurants}
-			/>
+			<div style={divStyle}>
+				<Restaurant
+					restaurants={this.state.restaurants}
+				/>
+				<MapContainer />
+			</div>
 		)
 	}
 }
