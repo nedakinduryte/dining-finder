@@ -15,7 +15,8 @@ class Result extends React.Component {
 	state = {
 		locationId: null,
 		cuisineId: null,
-		restaurants: []
+		restaurants: [],
+		selectedRestaurant: null
 	};
 
 	componentDidMount() {
@@ -32,18 +33,27 @@ class Result extends React.Component {
 	    								{headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
 	    
 		    const data = await api_call.json();
-		    this.setState({ restaurants: data.restaurants })
-		    console.log(this.state.restaurants);
+		    this.setState({ restaurants: data.restaurants }, this.selectRestaurant);
 		}
 	 };
+
+	 selectRestaurant = () => {
+		const restaurants = this.state.restaurants;
+		if (restaurants.length > 0) {
+			const selected = restaurants[Math.floor(Math.random()*restaurants.length)].restaurant;
+			this.setState({ selectedRestaurant: selected });
+		}
+	};
 
 	render() {
 		return(
 			<div style={divStyle}>
 				<Restaurant
-					restaurants={this.state.restaurants}
+					restaurant={this.state.selectedRestaurant}
 				/>
-				<MapContainer />
+				<MapContainer
+					// restaurants={this.state.restaurants}
+				/>
 			</div>
 		)
 	}

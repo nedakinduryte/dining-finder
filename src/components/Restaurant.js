@@ -26,25 +26,15 @@ const styles = createStyles(theme => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
-  
   avatar: {
     backgroundColor: red[500],
-  },
+  }
 }));
 
 class Restaurant extends React.Component {
 
-	selectRestaurant = () => {
-		const restaurants = this.props.restaurants;
-		if (restaurants.length > 0) {
-			return restaurants[Math.floor(Math.random()*restaurants.length)].restaurant;
-		} else {
-			return undefined;
-		}
-	};
-
 	render() {
-		const restaurant = this.selectRestaurant();
+		const restaurant = this.props.restaurant;
 		const classes = this.props.classes;
 
 		return(
