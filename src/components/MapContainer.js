@@ -11,14 +11,25 @@ const mapStyles = {
 class MapContainer extends React.Component {
 
 	render() {
-    return (
-    	<Map
-        	google={this.props.google}
-        	zoom={8}
-        	style={mapStyles}
-        	initialCenter={{ lat: 47.444, lng: -122.176}}
-    	/>
-    );
+		const restaurant = this.props.restaurant;
+		console.log(restaurant.location.longitude);
+		return (
+				<React.Fragment>
+					{ restaurant &&
+				    	<Map
+				        	google={this.props.google}
+				        	zoom={10}
+				        	style={mapStyles}
+				        	initialCenter={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
+				    	>
+								<Marker
+								name={ restaurant.name }
+    							position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
+								/>
+				    	</Map>
+				    }
+			    </React.Fragment>
+	    );
   }
 }
 

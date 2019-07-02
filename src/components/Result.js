@@ -48,12 +48,16 @@ class Result extends React.Component {
 	render() {
 		return(
 			<div style={divStyle}>
-				<Restaurant
-					restaurant={this.state.selectedRestaurant}
-				/>
-				<MapContainer
-					// restaurants={this.state.restaurants}
-				/>
+				{ this.state.selectedRestaurant &&
+					<React.Fragment>
+						<Restaurant
+							restaurant={ this.state.selectedRestaurant }
+						/>
+						<MapContainer
+							restaurant={ this.state.selectedRestaurant }
+						/>
+					</React.Fragment>
+				}
 			</div>
 		)
 	}
