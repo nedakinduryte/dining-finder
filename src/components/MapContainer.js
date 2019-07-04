@@ -10,6 +10,10 @@ const mapStyles = {
 
 class MapContainer extends React.Component {
 
+	onClick = name => {
+		this.props.markerOnClick(name);
+	};
+
 	render() {
 		const restaurants = this.props.restaurants;
 		console.log(restaurants);
@@ -28,6 +32,7 @@ class MapContainer extends React.Component {
 				    				<Marker
 										name={ restaurant.name }
     									position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
+    									onClick={ () => this.onClick(restaurant.name) }
 									/>
 								)
 				    		}) }
