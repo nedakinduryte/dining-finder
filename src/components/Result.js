@@ -15,10 +15,11 @@ class Result extends React.Component {
 	state = {
 		locationId: null,
 		cuisineId: null,
-		restaurants: [],
-		selectedRestaurant: null
+		restaurants: [],			// array of 10 best evaluated restaurants
+		selected: 0					// index of the restaurant that's currently on display (index zero is default)
 	};
 
+	// getting location ID & cuisine ID from the query string
 	componentDidMount() {
 		const values = queryString.parse(this.props.location.search);
 		this.setState({
@@ -27,37 +28,40 @@ class Result extends React.Component {
 		}, this.getRestaurants);
 	};
 
+	// getting 10 best evaluated restaurants from an API
 	async getRestaurants() {
 		if (this.state.locationId !== null && this.state.cuisineId !== null) {
 			const api_call = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=${ this.state.locationId }&entity_type=city&count=10&cuisines=${ this.state.cuisineId }&sort=rating&order=desc`,
 	    								{headers: {'Content-Type': 'application/json', "user-key": API_KEY}})
 	    
 		    const data = await api_call.json();
-		    this.setState({ restaurants: data.restaurants }, this.selectRestaurant);
+		    this.selectRestaurants(data.restaurants);
 		}
 	 };
 
-	 selectRestaurant = () => {
-		const restaurants = this.state.restaurants;
-		if (restaurants.length > 0) {
-			const selected = restaurants[Math.floor(Math.random()*restaurants.length)].restaurant;
-			this.setState({ selectedRestaurant: selected });
-		}
+	 // select 3 random restaurants
+	 selectRestaurants = (copy) => {
+		let selectedRestaurants = [];
+
+		for (let i = 0; i < 3; i++) {
+			var index = Math.floor(Math.random() * copy.length);
+			selectedRestaurants.push(copy[index].restaurant);
+			copy.splice(index, 1);
+		};
+
+		console.log(selectedRestaurants);
+		this.setState({ restaurants: selectedRestaurants });
 	};
 
 	render() {
 		return(
-			<div style={divStyle}>
-				{ this.state.selectedRestaurant &&
-					<React.Fragment>
-						<Restaurant
-							restaurant={ this.state.selectedRestaurant }
-						/>
-						<MapContainer
-							restaurant={ this.state.selectedRestaurant }
-						/>
-					</React.Fragment>
-				}
+			<div style={ divStyle }>
+				<Restaurant
+					restaurant={ this.state.restaurants[this.state.selected] }
+				/>
+				<MapContainer
+					restaurants={ this.state.restaurants }
+				/>
 			</div>
 		)
 	}

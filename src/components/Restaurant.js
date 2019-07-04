@@ -15,7 +15,6 @@ import { withStyles, createStyles } from '@material-ui/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-
 const theme = createMuiTheme({});
 
 const styles = createStyles(theme => ({
@@ -37,38 +36,41 @@ class Restaurant extends React.Component {
 		const restaurant = this.props.restaurant;
 		const classes = this.props.classes;
 
-		return(
-			<ThemeProvider theme={ theme }>
-				{ restaurant &&
-					<Card className={ classes.card }>
-		      			<CardMedia
-					        className={ classes.media }
-					        image={ restaurant.thumb }
-					        title={ restaurant.name }
-		      			/>
-		      			<CardContent>
-		        			<h1>{ restaurant.name }</h1>
-							<p>{ restaurant.cuisines } Cuisine</p>
-							<p>User rating: {" "}
-								<span style={{ color:`#${restaurant.user_rating.rating_color}` }}>
-									{ restaurant.user_rating.rating_text } ({ restaurant.user_rating.aggregate_rating } / 5)
-								</span>
-							</p>
-							<a href={ restaurant.menu_url }>Menu</a>
-							
-							<p>Average cost for two: { restaurant.average_cost_for_two }{ restaurant.currency }</p>
-							<p>Address:<br/>
-								{ restaurant.location.locality }<br/>
-								{ restaurant.location.zipcode }<br/>
-								{ restaurant.location.city }
-							</p>
-		      			</CardContent>
-		      			<a href={ restaurant.url }><button>Book a table</button></a>
-						<button>Get directions</button>
-		    		</Card>
-		    	}
-	    	</ThemeProvider>
-  		)
+		if (restaurant) {
+			console.log(restaurant);
+			return(
+				<ThemeProvider theme={ theme }>
+						<Card className={ classes.card }>
+			      			<CardMedia
+						        className={ classes.media }
+						        image={ restaurant.thumb }
+						        title={ restaurant.name }
+			      			/>
+			      			<CardContent>
+			        			<h1>{ restaurant.name }</h1>
+								<p>{ restaurant.cuisines } Cuisine</p>
+								<p>User rating: {" "}
+									<span style={{ color:`#${restaurant.user_rating.rating_color}` }}>
+										{ restaurant.user_rating.rating_text } ({ restaurant.user_rating.aggregate_rating } / 5)
+									</span>
+								</p>
+								<a href={ restaurant.menu_url }>Menu</a>
+								
+								<p>Average cost for two: { restaurant.average_cost_for_two }{ restaurant.currency }</p>
+								<p>Address:<br/>
+									{ restaurant.location.locality }<br/>
+									{ restaurant.location.zipcode }<br/>
+									{ restaurant.location.city }
+								</p>
+			      			</CardContent>
+			      			<a href={ restaurant.url }><button>Book a table</button></a>
+							<button>Get directions</button>
+		    			</Card>
+		    	</ThemeProvider>
+	  		)
+		} else {
+			return <div />;
+		}
 	}
 }
 
