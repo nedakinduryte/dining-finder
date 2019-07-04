@@ -49,7 +49,6 @@ class Result extends React.Component {
 			copy.splice(index, 1);
 		};
 
-		console.log(selectedRestaurants);
 		this.setState({ restaurants: selectedRestaurants });
 	};
 
