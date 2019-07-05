@@ -50,7 +50,6 @@ class Result extends React.Component {
 		};
 
 		this.setState({ restaurants: selectedRestaurants });
-		console.log(this.state.restaurants);
 	};
 
 	// Changing the restaurant on display when the marker is clicked

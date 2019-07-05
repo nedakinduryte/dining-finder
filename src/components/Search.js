@@ -33,7 +33,6 @@ class Search extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const query = queryString.stringify({ location: this.state.locationId, cuisine: this.state.cuisineId });
-		console.log(query);
 		this.props.history.push(`/restaurants?${query}`)
 	};
 

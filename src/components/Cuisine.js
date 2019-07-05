@@ -95,7 +95,6 @@ class Cuisine extends React.Component {
 		const response = await fetch(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${this.props.locationId}`, 
 				  					 { headers: { 'Content-Type': 'application/json', "user-key": API_KEY } } );
 		const data = await response.json();
-		console.log(data);
 		this.setState({ suggestions: data.cuisines });
 	}
 

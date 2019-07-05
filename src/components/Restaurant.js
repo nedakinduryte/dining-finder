@@ -37,7 +37,6 @@ class Restaurant extends React.Component {
 		const classes = this.props.classes;
 
 		if (restaurant) {
-			console.log(restaurant);
 			return(
 				<ThemeProvider theme={ theme }>
 						<Card className={ classes.card }>

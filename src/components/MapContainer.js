@@ -16,7 +16,6 @@ class MapContainer extends React.Component {
 
 	render() {
 		const restaurants = this.props.restaurants;
-		console.log(restaurants);
 
 		return (
 				<React.Fragment>
