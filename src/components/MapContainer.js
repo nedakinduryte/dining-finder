@@ -22,13 +22,14 @@ class MapContainer extends React.Component {
 					{ restaurants.length > 0 &&
 				    	<Map
 				        	google={this.props.google}
-				        	zoom={10}
+				        	zoom={15}
 				        	style={mapStyles}
 				        	initialCenter={{ lat: restaurants[0].location.latitude, lng: restaurants[0].location.longitude }}
 				    	>
 				    		{ restaurants.map(restaurant => {
 				    			return (
 				    				<Marker
+				    					key={ restaurant.id }
 				    					title={ restaurant.name }
 										name={ restaurant.name }
     									position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
