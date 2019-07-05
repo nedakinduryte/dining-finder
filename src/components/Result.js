@@ -55,12 +55,11 @@ class Result extends React.Component {
 
 	// Changing the restaurant on display when the marker is clicked
 	markerOnClick = name => {
-		console.log("you clicked me!");
-		// this.state.restaurants.map((cur, idx) => {
-		// 	cur.name === name;
-		// 	this.setState({ selected: idx })
-		// })
-		// console.log(this.state.selected);
+		this.state.restaurants.map((cur, idx) => {
+			if (cur.name === name) {
+				this.setState({ selected: idx });;
+			}
+		})
 	};
 
 	render() {
