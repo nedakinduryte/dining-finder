@@ -30,9 +30,10 @@ class MapContainer extends React.Component {
 				    		{ restaurants.map(restaurant => {
 				    			return (
 				    				<Marker
+				    					title={ restaurant.name }
 										name={ restaurant.name }
     									position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
-    									onClick={ () => this.onClick(restaurant.name) }
+    									onClick={ (e) => this.onClick(restaurant.name) }
 									/>
 								)
 				    		}) }

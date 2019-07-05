@@ -57,7 +57,7 @@ class Result extends React.Component {
 	markerOnClick = name => {
 		this.state.restaurants.map((cur, idx) => {
 			if (cur.name === name) {
-				this.setState({ selected: idx });;
+				this.setState({ selected: idx });
 			}
 		})
 	};
