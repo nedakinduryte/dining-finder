@@ -14,6 +14,7 @@ import { red } from '@material-ui/core/colors';
 import { withStyles, createStyles } from '@material-ui/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({});
 
@@ -27,6 +28,12 @@ const styles = createStyles(theme => ({
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  button: {
+    margin: '20px',
+  },
+  input: {
+    display: 'none',
   }
 }));
 
@@ -62,8 +69,9 @@ class Restaurant extends React.Component {
 									{ restaurant.location.city }
 								</p>
 			      			</CardContent>
-			      			<a href={ restaurant.url }><button>Book a table</button></a>
-							<button>Get directions</button>
+			      			<Button variant="contained" className={ classes.button } onClick={ restaurant.url }>
+        						Book a table
+     	 					</Button>
 		    			</Card>
 		    	</ThemeProvider>
 	  		)
