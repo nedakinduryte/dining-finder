@@ -7,13 +7,16 @@ import { withStyles, createStyles } from "@material-ui/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
 const theme = createMuiTheme({});
 
 const styles = createStyles(theme => ({
     card: {
-        width: 320
+        width: 320,
+        height: "100vh"
     },
     media: {
         height: 0,
@@ -27,6 +30,9 @@ const styles = createStyles(theme => ({
     },
     input: {
         display: "none"
+    },
+    link: {
+        margin: "10px 0"
     }
 }));
 
@@ -61,8 +67,11 @@ class Restaurant extends React.Component {
                                     5)
                                 </span>
                             </p>
-                            <a href={restaurant.menu_url}>Menu</a>
-
+                            <Typography>
+                                <Link href={restaurant.menu_url} className={classes.link}>
+                                    Menu
+                                </Link>
+                            </Typography>
                             <p>
                                 Average cost for two:{" "}
                                 {restaurant.average_cost_for_two}
@@ -95,7 +104,7 @@ class Restaurant extends React.Component {
 }
 
 Restaurant.propTypes = {
-	restaurant: PropTypes.object.isRequired
-}
+    restaurant: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Restaurant);

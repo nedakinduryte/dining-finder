@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import PropTypes from "prop-types";
 
 const mapStyles = {
-  width: "100%",
+  width: "calc(100% - 320px)",
   height: "100%"
 };
 
