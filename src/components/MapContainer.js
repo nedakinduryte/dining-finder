@@ -20,7 +20,7 @@ class MapContainer extends React.Component {
         {restaurants.length > 0 && (
           <Map
             google={this.props.google}
-            zoom={15}
+            zoom={14}
             style={mapStyles}
             initialCenter={{
               lat: restaurants[0].location.latitude,
