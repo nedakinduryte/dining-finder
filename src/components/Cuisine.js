@@ -12,7 +12,7 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = createStyles({
     root: {
-        height: 250,
+        height: "100px",
         flexGrow: 1,
         padding: "12px"
     },

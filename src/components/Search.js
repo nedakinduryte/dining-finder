@@ -7,35 +7,39 @@ import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import logo from "../logo.png";
+import background from "../background.jpg";
+
 
 const styles = {
     button: {
-        margin: "20px"
+		margin: "20px"
     },
     input: {
         display: "none"
     },
     root: {
 		flexGrow: 1,
-		width: "100%"
+		gridArea: "header"
 	},
 	main: {
-		display: "flex",
-		flexDirection: "column",
+		height: "100vh",
+		width: "100%",
+		display: "grid",
+		gridTemplateColumns: "1fr 1fr",
+		gridTemplateRows: "1fr 9fr",
+		gridTemplateAreas: `
+			"header header"
+			"form blank"
+		`,
 		alignItems: "center"
 	},
 	form: {
-		height: "400px",
-		width: "500px",
-		display: "flex",
-		flexDirection: "column",
-		paddingTop: "50px"
+		gridArea: "form",
+		padding: "30px"
 	},
-	location: {
-		height: "200px"
-	},
-	cuisine: {
-		height: "200px"
+	logo: {
+		height: "18px"
 	}
 };
 
@@ -70,19 +74,21 @@ class Search extends React.Component {
                 <div className={classes.root}>
                     <AppBar position="static" color="default">
                         <Toolbar>
-                            <Typography variant="h6" color="inherit">
-                                Photos
+							<Typography variant="h6" color="inherit">
+								<img 
+									className={classes.logo}
+									alt="logo"
+									src={logo}
+									/>
                             </Typography>
                         </Toolbar>
                     </AppBar>
                 </div>
                 <div className={classes.form}>
                     <Location
-						className={classes.location}
                         handleLocationSelection={this.handleLocationSelection}
                     />
                     <Cuisine
-						className={classes.cuisine}
                         locationId={this.state.locationId}
                         handleCuisineSelection={this.handleCuisineSelection}
                     />
