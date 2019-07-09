@@ -4,43 +4,46 @@ import Location from "./Location";
 import Cuisine from "./Cuisine";
 import { withStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import logo from "../logo.png";
+import logo from "../light-logo.png";
 import background from "../background.jpg";
-
 
 const styles = {
     button: {
-		margin: "20px"
+        margin: "20px"
     },
     input: {
         display: "none"
     },
     root: {
-		flexGrow: 1,
-		gridArea: "header"
-	},
-	main: {
-		height: "100vh",
-		width: "100%",
-		display: "grid",
-		gridTemplateColumns: "1fr 1fr",
-		gridTemplateRows: "1fr 9fr",
-		gridTemplateAreas: `
+        flexGrow: 1,
+        gridArea: "header"
+    },
+    main: {
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+        height: "100vh",
+        width: "100%",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gridTemplateRows: "1fr 9fr",
+        gridTemplateAreas: `
 			"header header"
 			"form blank"
 		`,
-		alignItems: "center"
-	},
-	form: {
-		gridArea: "form",
-		padding: "30px"
-	},
-	logo: {
-		height: "18px"
-	}
+        alignItems: "center"
+    },
+    form: {
+        gridArea: "form",
+		padding: "30px 70px",
+		margin: "0 100px",
+		borderRadius: "5px",
+		backgroundColor: "rgba(255, 255, 255, 0.95)",
+		width: "300px"
+    },
+    logo: {
+		height: "20px",
+		padding: "30px 30px"
+    }
 };
 
 class Search extends React.Component {
@@ -72,17 +75,7 @@ class Search extends React.Component {
         return (
             <div className={classes.main}>
                 <div className={classes.root}>
-                    <AppBar position="static" color="default">
-                        <Toolbar>
-							<Typography variant="h6" color="inherit">
-								<img 
-									className={classes.logo}
-									alt="logo"
-									src={logo}
-									/>
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
+                    <img className={classes.logo} alt="logo" src={logo} />
                 </div>
                 <div className={classes.form}>
                     <Location
