@@ -13,8 +13,9 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 const styles = createStyles({
     root: {
         height: "100px",
-        flexGrow: 1,
-        padding: "12px"
+		flexGrow: 1,
+		width: "100%",
+		alignSelf: "end"
     },
     container: {
         position: "relative"

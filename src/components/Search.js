@@ -9,7 +9,9 @@ import background from "../background.jpg";
 
 const styles = {
     button: {
-        margin: "20px"
+		height: "40px",
+		justifySelf: "end",
+		alignSelf: "center"
     },
     input: {
         display: "none"
@@ -33,16 +35,20 @@ const styles = {
         alignItems: "center"
     },
     form: {
-        gridArea: "form",
-		padding: "30px 70px",
-		margin: "0 100px",
+		gridArea: "form",
+		padding: "45px 70px",
+		margin: "20px 100px",
 		borderRadius: "5px",
-		backgroundColor: "rgba(255, 255, 255, 0.95)",
-		width: "300px"
+		backgroundColor: "rgba(255, 255, 255, 0.98)",
+		height: "55vh",
+		width: "300px",
+		display: "grid"
     },
     logo: {
 		height: "20px",
-		padding: "30px 30px"
+		padding: "30px 30px",
+		gridTemplateColumns: "1fr",
+        gridTemplateRows: "1fr 1fr 1fr",
     }
 };
 
