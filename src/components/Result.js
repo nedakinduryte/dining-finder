@@ -24,7 +24,7 @@ const styles = {
 		`
     },
     restaurant: {
-        gridArea: "info"
+		gridArea: "info"
     },
     map: {
         gridArea: "map"
