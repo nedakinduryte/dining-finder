@@ -2,12 +2,33 @@ import React from "react";
 import Restaurant from "./Restaurant";
 import queryString from "query-string";
 import MapContainer from "./MapContainer";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
-const divStyle = {
-    display: "flex",
-    flexDirection: "row"
+const styles = {
+    root: {
+		flexGrow: 1,
+		gridArea: "header"
+    },
+    container: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gridTemplateRows: "1fr 9fr",
+        gridTemplateAreas: `
+			"header header header header"
+			"info map map map"
+		`
+    },
+    restaurant: {
+        gridArea: "info"
+    },
+    map: {
+        gridArea: "map"
+    }
 };
 
 class Result extends React.Component {
@@ -75,12 +96,24 @@ class Result extends React.Component {
     };
 
     render() {
+        const classes = this.props.classes;
         return (
-            <div style={divStyle}>
+            <div className={classes.container}>
+                <div className={ classes.root }>
+                    <AppBar position="static" color="default">
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit">
+                                Photos
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </div>
                 <Restaurant
+                    className={classes.restaurant}
                     restaurant={this.state.restaurants[this.state.selected]}
                 />
                 <MapContainer
+                    className={classes.map}
                     restaurants={this.state.restaurants}
                     markerOnClick={this.markerOnClick}
                 />
@@ -89,4 +122,4 @@ class Result extends React.Component {
     }
 }
 
-export default Result;
+export default withStyles(styles)(Result);
