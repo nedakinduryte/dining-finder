@@ -14,6 +14,7 @@ const styles = createStyles({
     root: {
 		flexGrow: 1,
 		width: "375px",
+		padding: "0 0 25px 0",
 		alignSelf: "end"
     },
     container: {
