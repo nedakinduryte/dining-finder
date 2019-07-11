@@ -10,8 +10,8 @@ import background from "../background.jpg";
 const styles = {
     button: {
 		height: "40px",
-		justifySelf: "end",
-		alignSelf: "center"
+		padding: "8px 22px",
+		alignSelf: "flex-end"
     },
     input: {
         display: "none"
@@ -32,18 +32,27 @@ const styles = {
 			"header header"
 			"form blank"
 		`,
-        alignItems: "center"
+        alignItems: "start"
     },
     form: {
 		gridArea: "form",
-		padding: "45px 70px",
-		margin: "20px 100px",
-		borderRadius: "5px",
-		backgroundColor: "rgba(255, 255, 255, 0.98)",
-		height: "55vh",
-		width: "300px",
-		display: "grid"
-    },
+		borderRadius: "4px",
+		backgroundColor: "#ffffff",
+		padding: "32px 32px 24px 32px",
+		width: "377px",
+		height: "324px",
+		boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-between",
+		margin: "25px 0 0 76px"
+	},
+	h1: {
+		fontSize: "24px",
+		fontWeight: "700",
+		margin: "0",
+		padding: "0"
+	},
     logo: {
 		height: "20px",
 		padding: "30px 30px",
@@ -84,6 +93,7 @@ class Search extends React.Component {
                     <img className={classes.logo} alt="logo" src={logo} />
                 </div>
                 <div className={classes.form}>
+					<h1 className={ classes.h1 }>Find the best places to eat at in your city.</h1>
                     <Location
                         handleLocationSelection={this.handleLocationSelection}
                     />

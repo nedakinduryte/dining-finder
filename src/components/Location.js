@@ -13,9 +13,8 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = createStyles({
     root: {
-        height: "100px",
 		flexGrow: 1,
-		width: "100%",
+		width: "375px",
 		alignSelf: "end"
     },
     container: {
@@ -24,7 +23,6 @@ const styles = createStyles({
     suggestionsContainerOpen: {
         position: "absolute",
         zIndex: 1,
-        marginTop: "24px",
         left: 0,
         right: 0
     },
@@ -63,7 +61,8 @@ function renderInputComponent(inputProps) {
 
     return (
         <TextField
-            fullWidth
+			fullWidth
+			variant="outlined"
             InputProps={{
                 inputRef: node => {
                     ref(node);

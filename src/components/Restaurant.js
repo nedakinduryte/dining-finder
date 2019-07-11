@@ -15,8 +15,7 @@ const theme = createMuiTheme({});
 
 const styles = createStyles(theme => ({
     card: {
-        width: 320,
-        height: "100vh"
+		height: "100%"
     },
     media: {
         height: 0,
@@ -32,8 +31,12 @@ const styles = createStyles(theme => ({
         display: "none"
     },
     link: {
-        margin: "10px 0"
-    }
+		margin: "10px 0",
+		fontFamily: "'Montserrat', sans-serif"
+	},
+	address: {
+		padding: "0 10px"
+	}
 }));
 
 class Restaurant extends React.Component {
@@ -52,7 +55,7 @@ class Restaurant extends React.Component {
                         />
                         <CardContent>
                             <h1>{restaurant.name}</h1>
-                            <p>{restaurant.cuisines} Cuisine</p>
+                            <p>{restaurant.cuisines}</p>
                             <p>
                                 User rating:{" "}
                                 <span
@@ -79,12 +82,13 @@ class Restaurant extends React.Component {
                             </p>
                             <p>
                                 Address:
-                                <br />
-                                {restaurant.location.locality}
-                                <br />
-                                {restaurant.location.zipcode}
-                                <br />
-                                {restaurant.location.city}
+                                <div className={ classes.address }>
+									{restaurant.location.locality}
+									<br />
+									{restaurant.location.zipcode}
+									<br />
+									{restaurant.location.city}
+								</div>
                             </p>
                         </CardContent>
                         <Button
