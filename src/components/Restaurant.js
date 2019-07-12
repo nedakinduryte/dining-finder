@@ -33,7 +33,7 @@ const styles = createStyles(theme => ({
 		padding: "0 10px"
 	},
 	button: {
-        margin: "20px"
+        margin: "0 20px 20px 20px"
     }
 }));
 

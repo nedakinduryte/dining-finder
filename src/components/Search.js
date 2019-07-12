@@ -55,7 +55,7 @@ const styles = {
 	},
     logo: {
 		height: "20px",
-		padding: "30px 30px",
+		padding: "30px",
 		gridTemplateColumns: "1fr",
         gridTemplateRows: "1fr 1fr 1fr",
     }

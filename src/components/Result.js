@@ -6,12 +6,14 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import logo from "../dark-logo.png";
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = {
     root: {
-		gridArea: "header"
+		gridArea: "header",
+		zIndex: "2"
     },
     container: {
 		height: "100vh",
@@ -22,7 +24,11 @@ const styles = {
 			"header header header header"
 			"info map map map"
 		`
-    },
+	},
+	logo: {
+		height: "20px",
+		paddingTop: "10px"
+	},
     restaurant: {
 		gridArea: "info"
     },
@@ -103,7 +109,7 @@ class Result extends React.Component {
                     <AppBar position="static" color="default">
                         <Toolbar>
                             <Typography variant="h6" color="inherit">
-                                Photos
+								<img className={classes.logo} alt="logo" src={logo} />
                             </Typography>
                         </Toolbar>
                     </AppBar>
