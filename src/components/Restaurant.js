@@ -91,24 +91,14 @@ class Restaurant extends React.Component {
                         >
                             See menu
                         </Button>
-						{ restaurant.has_table_booking ?
-							<Button
-								variant="contained"
-								className={classes.button}
-								href={restaurant.url}
-							>
-								Book a table
-							</Button>
-						:
 						<Button
 							variant="contained"
-							disabled
+							disabled={ restaurant.has_table_booking }
 							className={classes.button}
 							href={restaurant.url}
 						>
 							Book a table
 						</Button>
-						}
                     </Card>
                 </ThemeProvider>
             );

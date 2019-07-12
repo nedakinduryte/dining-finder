@@ -9,9 +9,19 @@ import background from "../background.jpg";
 
 const styles = {
     button: {
-		height: "40px",
-		padding: "8px 22px",
-		alignSelf: "flex-end"
+        alignSelf: "flex-end",
+        boxShadow: "none",
+        backgroundColor: "#34495e",
+        padding: "10px 20px",
+        color: "#fff",
+        fontSize: "14px",
+        fontWeight: "600",
+        letterSpacing: 0,
+        textTransform: "none",
+        fontFamily: "Montserrat",
+        "&:hover": {
+            backgroundColor: "#5c6d7e"
+        }
     },
     input: {
         display: "none"
@@ -26,38 +36,36 @@ const styles = {
         height: "100vh",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gridTemplateRows: "1fr 9fr",
+        gridTemplateColumns: "1fr",
+        gridTemplateRows: "80px 1fr",
         gridTemplateAreas: `
-			"header header"
-			"form blank"
+			"header"
+			"form"
 		`,
         alignItems: "start"
     },
     form: {
-		gridArea: "form",
-		borderRadius: "4px",
-		backgroundColor: "#ffffff",
-		padding: "32px 32px 24px 32px",
-		width: "377px",
-		height: "324px",
-		boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "space-between",
-		margin: "25px 0 0 76px"
-	},
-	h1: {
-		fontSize: "24px",
-		fontWeight: "700",
-		margin: "0",
-		padding: "0"
-	},
+        gridArea: "form",
+        borderRadius: "4px",
+        backgroundColor: "#fff",
+        padding: "32px 32px 24px 32px",
+        width: "380px",
+        boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+        display: "flex",
+        flexDirection: "column",
+        alignSelf: "center",
+        margin: "0 0 80px 80px"
+    },
+    h1: {
+        color: "rgb(72, 72, 72)",
+        fontSize: "2em",
+        fontWeight: "700",
+        margin: "0",
+        padding: "0 0 30px"
+    },
     logo: {
-		height: "20px",
-		padding: "30px",
-		gridTemplateColumns: "1fr",
-        gridTemplateRows: "1fr 1fr 1fr",
+        height: "20px",
+        padding: "30px"
     }
 };
 
@@ -93,7 +101,9 @@ class Search extends React.Component {
                     <img className={classes.logo} alt="logo" src={logo} />
                 </div>
                 <div className={classes.form}>
-					<h1 className={ classes.h1 }>Find the best places to eat at in your city.</h1>
+                    <h1 className={classes.h1}>
+                        Find the best places to eat in your city.
+                    </h1>
                     <Location
                         handleLocationSelection={this.handleLocationSelection}
                     />
