@@ -39,7 +39,7 @@ const styles = createStyles(theme => ({
 
 class Restaurant extends React.Component {
     render() {
-        const restaurant = this.props.restaurant;
+		const restaurant = this.props.restaurant;
         const classes = this.props.classes;
 
         if (restaurant) {
@@ -87,17 +87,28 @@ class Restaurant extends React.Component {
 						<Button
                             variant="contained"
                             className={classes.button}
-                            onClick={restaurant.menu_url}
+                            href={restaurant.menu_url}
                         >
                             See menu
                         </Button>
-                        <Button
-                            variant="contained"
-                            className={classes.button}
-                            onClick={restaurant.url}
-                        >
-                            Book a table
-                        </Button>
+						{ restaurant.has_table_booking ?
+							<Button
+								variant="contained"
+								className={classes.button}
+								href={restaurant.url}
+							>
+								Book a table
+							</Button>
+						:
+						<Button
+							variant="contained"
+							disabled
+							className={classes.button}
+							href={restaurant.url}
+						>
+							Book a table
+						</Button>
+						}
                     </Card>
                 </ThemeProvider>
             );

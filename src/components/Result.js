@@ -16,7 +16,7 @@ const styles = {
 		zIndex: "2"
     },
     container: {
-		height: "100vh",
+		maxHeight: "100vh",
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr 1fr",
         gridTemplateRows: "64px 1fr",
