@@ -14,7 +14,13 @@ const styles = createStyles({
     root: {
 		width: "100%",
 		alignSelf: "end",
-		padding: "0 0 30px"
+		padding: "0 0 30px",
+		"& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+				borderColor: "#34495e",
+				border: "1px solid #34495e"
+            }
+        }
     },
     container: {
         position: "relative"
