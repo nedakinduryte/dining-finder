@@ -12,11 +12,11 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = {
     root: {
-		gridArea: "header",
-		zIndex: "2"
+        gridArea: "header",
+        zIndex: "2"
     },
     container: {
-		maxHeight: "100vh",
+        maxHeight: "100vh",
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr 1fr",
         gridTemplateRows: "64px 1fr",
@@ -24,13 +24,13 @@ const styles = {
 			"header header header header"
 			"info map map map"
 		`
-	},
-	logo: {
-		height: "20px",
-		paddingTop: "10px"
-	},
+    },
+    logo: {
+        height: "20px",
+        paddingTop: "10px"
+    },
     restaurant: {
-		gridArea: "info"
+        gridArea: "info"
     },
     map: {
         gridArea: "map"
@@ -105,11 +105,15 @@ class Result extends React.Component {
         const classes = this.props.classes;
         return (
             <div className={classes.container}>
-                <div className={ classes.root }>
+                <div className={classes.root}>
                     <AppBar position="static" color="default">
                         <Toolbar>
                             <Typography variant="h6" color="inherit">
-								<img className={classes.logo} alt="logo" src={logo} />
+                                <img
+                                    className={classes.logo}
+                                    alt="logo"
+                                    src={logo}
+                                />
                             </Typography>
                         </Toolbar>
                     </AppBar>

@@ -15,7 +15,13 @@ const styles = createStyles({
     root: {
         width: "100%",
         alignSelf: "end",
-        padding: "0 0 30px"
+		padding: "0 0 30px",
+		"& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+				borderColor: "#34495e",
+				border: "1px solid #34495e"
+            }
+        }
     },
     container: {
         position: "relative"
@@ -24,9 +30,9 @@ const styles = createStyles({
         position: "absolute",
         zIndex: 2,
         left: 0,
-		right: 0,
-		maxHeight: "300px",
-		overflow: "auto"
+        right: 0,
+        maxHeight: "300px",
+        overflow: "auto"
     },
     suggestion: {
         display: "block"
@@ -35,7 +41,7 @@ const styles = createStyles({
         margin: 0,
         padding: 0,
         listStyleType: "none"
-	}
+    },
 });
 
 function renderSuggestion(suggestion, { query, isHighlighted }) {
