@@ -7,36 +7,34 @@ import { withStyles, createStyles } from "@material-ui/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
 const theme = createMuiTheme({});
 
 const styles = createStyles(theme => ({
     card: {
-		height: "100%"
+		height: "calc(100vh-64px)",
+		overflow: "auto"
     },
     media: {
         height: 0,
         paddingTop: "56.25%" // 16:9
     },
     avatar: {
-        backgroundColor: red[500]
-    },
-    button: {
-        margin: "20px"
-    },
+		backgroundColor: red[500]
+	},
+	paragraph: {
+		fontWeight: "600"
+	},
     input: {
         display: "none"
-    },
-    link: {
-		margin: "10px 0",
-		fontFamily: "'Montserrat', sans-serif"
 	},
 	address: {
 		padding: "0 10px"
-	}
+	},
+	button: {
+        margin: "20px"
+    }
 }));
 
 class Restaurant extends React.Component {
@@ -55,7 +53,7 @@ class Restaurant extends React.Component {
                         />
                         <CardContent>
                             <h1>{restaurant.name}</h1>
-                            <p>{restaurant.cuisines}</p>
+                            <p className={ classes.paragraph }>{restaurant.cuisines}</p>
                             <p>
                                 User rating:{" "}
                                 <span
@@ -70,11 +68,6 @@ class Restaurant extends React.Component {
                                     5)
                                 </span>
                             </p>
-                            <Typography>
-                                <Link href={restaurant.menu_url} className={classes.link}>
-                                    Menu
-                                </Link>
-                            </Typography>
                             <p>
                                 Average cost for two:{" "}
                                 {restaurant.average_cost_for_two}
@@ -91,6 +84,13 @@ class Restaurant extends React.Component {
 								</div>
                             </p>
                         </CardContent>
+						<Button
+                            variant="contained"
+                            className={classes.button}
+                            onClick={restaurant.menu_url}
+                        >
+                            See menu
+                        </Button>
                         <Button
                             variant="contained"
                             className={classes.button}

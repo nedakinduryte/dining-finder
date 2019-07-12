@@ -11,7 +11,6 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = {
     root: {
-		// flexGrow: 1,
 		gridArea: "header"
     },
     container: {
