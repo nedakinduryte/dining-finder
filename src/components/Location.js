@@ -16,6 +16,9 @@ const styles = createStyles({
         width: "100%",
         alignSelf: "end",
 		padding: "0 0 30px",
+		'& label.Mui-focused': {
+			color: '#34495e',
+		},
 		"& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
 				borderColor: "#34495e",
