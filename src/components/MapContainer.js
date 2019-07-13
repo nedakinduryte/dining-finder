@@ -3,11 +3,6 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 import PropTypes from "prop-types";
 
-const mapStyles = {
-	width: "75vw",
-	height: "calc(100vh - 64px)"
-};
-
 class MapContainer extends React.Component {
   onClick = name => {
     this.props.markerOnClick(name);
@@ -22,7 +17,7 @@ class MapContainer extends React.Component {
           <Map
             google={this.props.google}
             zoom={12}
-            style={mapStyles}
+            style={{ position: "absolute", width: "75%", height: "calc(100% - 64px)" }}
             initialCenter={{
               lat: restaurants[0].location.latitude,
               lng: restaurants[0].location.longitude

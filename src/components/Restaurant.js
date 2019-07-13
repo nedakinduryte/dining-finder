@@ -13,7 +13,7 @@ const theme = createMuiTheme({});
 
 const styles = createStyles(theme => ({
     card: {
-		height: "calc(100vh-64px)",
+		height: "calc(100vh - 64px)",
 		overflow: "auto"
     },
     media: {

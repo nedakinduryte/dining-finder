@@ -18,11 +18,11 @@ const styles = {
     container: {
         maxHeight: "100vh",
         display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gridTemplateColumns: "25% 1fr",
         gridTemplateRows: "64px 1fr",
         gridTemplateAreas: `
-			"header header header header"
-			"info map map map"
+			"header header"
+			"info map"
 		`
     },
     logo: {

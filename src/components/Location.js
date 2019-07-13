@@ -16,9 +16,8 @@ const styles = createStyles({
         width: "100%",
         alignSelf: "end",
 		padding: "0 0 30px",
-		'& label.Mui-focused': {
-			color: '#34495e',
-			fontFamily: "Montserrat"
+		"& label.Mui-focused": {
+			color: "#34495e"
 		},
 		"& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
@@ -27,11 +26,8 @@ const styles = createStyles({
             }
         }
 	},
-	input: {
-		fontFamily: "Montserrat"
-	},
     container: {
-		position: "relative",
+		position: "relative"
     },
     suggestionsContainerOpen: {
         position: "absolute",
