@@ -18,6 +18,7 @@ const styles = createStyles({
 		padding: "0 0 30px",
 		'& label.Mui-focused': {
 			color: '#34495e',
+			fontFamily: "Montserrat"
 		},
 		"& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
@@ -25,9 +26,12 @@ const styles = createStyles({
 				border: "1px solid #34495e"
             }
         }
-    },
+	},
+	input: {
+		fontFamily: "Montserrat"
+	},
     container: {
-        position: "relative"
+		position: "relative",
     },
     suggestionsContainerOpen: {
         position: "absolute",
@@ -38,12 +42,12 @@ const styles = createStyles({
         overflow: "auto"
     },
     suggestion: {
-        display: "block"
+		display: "block"
     },
     suggestionsList: {
         margin: 0,
         padding: 0,
-        listStyleType: "none"
+		listStyleType: "none"
     },
 });
 
