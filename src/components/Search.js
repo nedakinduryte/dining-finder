@@ -21,7 +21,13 @@ const styles = {
         fontFamily: "Montserrat",
         "&:hover": {
             backgroundColor: "#5c6d7e"
-        }
+		},
+		"@media screen and (max-width: 745px)": {
+			width: "calc(100vw - 40px)",
+			padding: "10px",
+			margin: "0 0 20px",
+			alignSelf: "center"
+		},
     },
     input: {
         display: "none"
@@ -42,7 +48,7 @@ const styles = {
 			"header"
 			"form"
 		`,
-        alignItems: "start"
+		alignItems: "start"
     },
     form: {
         gridArea: "form",
@@ -54,14 +60,38 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         alignSelf: "center",
-        margin: "0 0 80px 80px"
-    },
+        margin: "0 0 80px 80px",
+        "@media screen and (max-width: 900px)": {
+            justifySelf: "center",
+            alignSelf: "start",
+            margin: "100px 0 0"
+		},
+		"@media screen and (max-width: 745px)": {
+			width: "calc(100vw - 40px)",
+			margin: "0",
+			padding: "20px",
+			justifySelf: "center",
+			backgroundColor: "transparent"
+        }
+	},
+	mobileForm: {
+		"@media screen and (max-width: 745px)": {
+			alignSelf: "center",
+			backgroundColor: "#fff",
+			display: "flex",
+			flexDirection: "column"
+		}
+	},
     h1: {
         color: "rgb(72, 72, 72)",
         fontSize: "2em",
         fontWeight: "700",
         margin: "0",
-        padding: "0 0 30px"
+		padding: "0 0 30px",
+		"@media screen and (max-width: 745px)": {
+			color: "#fff",
+			padding: "0 0 15px"
+		}
     },
     logo: {
         height: "20px",
@@ -104,20 +134,22 @@ class Search extends React.Component {
                     <h1 className={classes.h1}>
                         Find the best places to eat in your city.
                     </h1>
-                    <Location
-                        handleLocationSelection={this.handleLocationSelection}
-                    />
-                    <Cuisine
-                        locationId={this.state.locationId}
-                        handleCuisineSelection={this.handleCuisineSelection}
-                    />
-                    <Button
-                        variant="contained"
-                        className={classes.button}
-                        onClick={this.handleSubmit}
-                    >
-                        Search
-                    </Button>
+					<div className={classes.mobileForm}>
+						<Location
+							handleLocationSelection={this.handleLocationSelection}
+						/>
+						<Cuisine
+							locationId={this.state.locationId}
+							handleCuisineSelection={this.handleCuisineSelection}
+						/>
+						<Button
+							variant="contained"
+							className={classes.button}
+							onClick={this.handleSubmit}
+						>
+							Search
+						</Button>
+					</div>
                 </div>
             </div>
         );

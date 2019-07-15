@@ -24,6 +24,11 @@ const styles = createStyles({
 				borderColor: "#34495e",
 				border: "1px solid #34495e"
             }
+		},
+		"@media screen and (max-width: 745px)": {
+			width: "calc(100vw - 40px)",
+			alignSelf: "center",
+			padding: "20px"
         }
 	},
     container: {
