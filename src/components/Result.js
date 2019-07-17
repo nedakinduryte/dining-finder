@@ -16,7 +16,8 @@ const styles = {
         zIndex: "2"
     },
     container: {
-        maxHeight: "100vh",
+		height: "100vh",
+		width: "100%",
         display: "grid",
         gridTemplateColumns: "25% 1fr",
         gridTemplateRows: "64px 1fr",
@@ -33,7 +34,7 @@ const styles = {
         gridArea: "info"
     },
     map: {
-        gridArea: "map"
+		gridArea: "map"
     }
 };
 
