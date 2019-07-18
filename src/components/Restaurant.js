@@ -25,7 +25,15 @@ const styles = createStyles(theme => ({
     buttons: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        padding: "0 0 10px 0"
+    },
+    button: {
+        color: "#fff",
+        backgroundColor: "#34495e",
+        "&:hover": {
+            backgroundColor: "#5c6d7e"
+        }
     }
 }));
 
