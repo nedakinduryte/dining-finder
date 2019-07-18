@@ -21,10 +21,10 @@ const styles = {
     },
     media: {
         height: 0,
-		paddingTop: "56.25%" // 16:9
-	},
-	subheader: {
-		fontWeight: "600"
+        paddingTop: "56.25%" // 16:9
+    },
+    subheader: {
+        fontWeight: "600"
     },
     buttons: {
         display: "flex",
@@ -36,7 +36,7 @@ const styles = {
 
 class Restaurant extends React.Component {
     render() {
-		const restaurant = this.props.restaurant;
+        const restaurant = this.props.restaurant;
         const classes = this.props.classes;
 
         if (restaurant) {
@@ -49,9 +49,13 @@ class Restaurant extends React.Component {
                             title={restaurant.name}
                         />
                         <CardContent>
-                            <h1 className={ classes.header }>{restaurant.name}</h1>
-                            <p className={ classes.subheader }>{restaurant.cuisines}</p>
-                            <p className={ classes.paragraph }>
+                            <h1 className={classes.header}>
+                                {restaurant.name}
+                            </h1>
+                            <p className={classes.subheader}>
+                                {restaurant.cuisines}
+                            </p>
+                            <p className={classes.paragraph}>
                                 User rating:{" "}
                                 <span
                                     style={{
@@ -65,20 +69,20 @@ class Restaurant extends React.Component {
                                     5)
                                 </span>
                             </p>
-                            <p className={ classes.paragraph }>
+                            <p className={classes.paragraph}>
                                 Average cost for two:{" "}
                                 {restaurant.average_cost_for_two}
                                 {restaurant.currency}
                             </p>
-                            <p className={ classes.paragraph }>
+                            <p className={classes.paragraph}>
                                 Address:
-                                <div className={ classes.paragraph }>
-									{restaurant.location.locality}
-									<br />
-									{restaurant.location.zipcode}
-									<br />
-									{restaurant.location.city}
-								</div>
+                                <div className={classes.paragraph}>
+                                    {restaurant.location.locality}
+                                    <br />
+                                    {restaurant.location.zipcode}
+                                    <br />
+                                    {restaurant.location.city}
+                                </div>
                             </p>
                         </CardContent>
                         <div className={classes.buttons}>
@@ -92,7 +96,7 @@ class Restaurant extends React.Component {
                             </Button>
                             <Button
                                 variant="contained"
-                                disabled={ restaurant.has_table_booking }
+                                disabled={restaurant.has_table_booking}
                                 className={classes.button}
                                 href={restaurant.url}
                                 color="primary"
