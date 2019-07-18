@@ -2,15 +2,19 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import { withStyles, createStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+    palette: {
+        primary: { 500: "#34495e" }
+    }
+});
 
-const styles = createStyles(theme => ({
+const styles = {
     card: {
         height: "calc(100vh - 64px)",
         overflow: "auto"
@@ -27,15 +31,8 @@ const styles = createStyles(theme => ({
         flexDirection: "row",
         justifyContent: "space-evenly",
         padding: "0 0 10px 0"
-    },
-    button: {
-        color: "#fff",
-        backgroundColor: "#34495e",
-        "&:hover": {
-            backgroundColor: "#5c6d7e"
-        }
     }
-}));
+};
 
 class Restaurant extends React.Component {
     render() {
@@ -89,6 +86,7 @@ class Restaurant extends React.Component {
                                 variant="contained"
                                 className={classes.button}
                                 href={restaurant.menu_url}
+                                color="primary"
                             >
                                 See menu
                             </Button>
@@ -97,6 +95,7 @@ class Restaurant extends React.Component {
                                 disabled={ restaurant.has_table_booking }
                                 className={classes.button}
                                 href={restaurant.url}
+                                color="primary"
                             >
                                 Book a table
                             </Button>
