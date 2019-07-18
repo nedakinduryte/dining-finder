@@ -25,7 +25,7 @@ const styles = createStyles(theme => ({
     buttons: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-evenly",
         padding: "0 0 10px 0"
     },
     button: {
