@@ -70,16 +70,16 @@ const styles = {
 			width: "calc(100vw - 40px)",
 			margin: "0",
 			padding: "20px",
-			justifySelf: "center",
+            justifySelf: "center",
 			backgroundColor: "transparent"
         }
 	},
 	mobileForm: {
+        display: "flex",
+        flexDirection: "column",
 		"@media screen and (max-width: 745px)": {
 			alignSelf: "center",
-			backgroundColor: "#fff",
-			display: "flex",
-			flexDirection: "column"
+			backgroundColor: "#fff"
 		}
 	},
     h1: {
