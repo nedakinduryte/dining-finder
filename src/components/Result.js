@@ -8,6 +8,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import logo from "../light-logo.png";
+import { Link } from 'react-router-dom'
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
@@ -116,11 +117,15 @@ class Result extends React.Component {
                     <ThemeProvider theme={theme}>
                         <AppBar position="static" color="primary">
                             <Toolbar>
-                                <img
-                                    className={classes.logo}
-                                    alt="logo"
-                                    src={logo}
-                                />
+								<Link
+									to="/"
+								>
+									<img
+										className={classes.logo}
+										alt="logo"
+										src={logo}
+									/>
+								</Link>
                             </Toolbar>
                         </AppBar>
                     </ThemeProvider>
