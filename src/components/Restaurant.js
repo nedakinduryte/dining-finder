@@ -17,7 +17,8 @@ const theme = createMuiTheme({
 const styles = {
     card: {
         height: "calc(100vh - 64px)",
-        overflow: "auto"
+        overflow: "auto",
+        borderRadius: "0"
     },
     media: {
         height: 0,
