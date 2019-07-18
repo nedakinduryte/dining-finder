@@ -3,12 +3,19 @@ import Restaurant from "./Restaurant";
 import queryString from "query-string";
 import MapContainer from "./MapContainer";
 import { withStyles } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import logo from "../dark-logo.png";
+import logo from "../light-logo.png";
 
 const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: { 500: "#34495e" }
+    }
+});
 
 const styles = {
     root: {
@@ -16,8 +23,8 @@ const styles = {
         zIndex: "2"
     },
     container: {
-		height: "100vh",
-		width: "100%",
+        height: "100vh",
+        width: "100%",
         display: "grid",
         gridTemplateColumns: "25% 1fr",
         gridTemplateRows: "64px 1fr",
@@ -27,14 +34,13 @@ const styles = {
 		`
     },
     logo: {
-        height: "20px",
-        paddingTop: "10px"
+        height: "20px"
     },
     restaurant: {
         gridArea: "info"
     },
     map: {
-		gridArea: "map"
+        gridArea: "map"
     }
 };
 
@@ -107,17 +113,17 @@ class Result extends React.Component {
         return (
             <div className={classes.container}>
                 <div className={classes.root}>
-                    <AppBar position="static" color="default">
-                        <Toolbar>
-                            <Typography variant="h6" color="inherit">
+                    <ThemeProvider theme={theme}>
+                        <AppBar position="static" color="primary">
+                            <Toolbar>
                                 <img
                                     className={classes.logo}
                                     alt="logo"
                                     src={logo}
                                 />
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
+                            </Toolbar>
+                        </AppBar>
+                    </ThemeProvider>
                 </div>
                 <Restaurant
                     className={classes.restaurant}
