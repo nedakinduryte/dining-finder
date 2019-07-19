@@ -27,7 +27,7 @@ const styles = {
         height: "100vh",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: "25% 1fr",
+        gridTemplateColumns: "350px 1fr",
         gridTemplateRows: "64px 1fr",
         gridTemplateAreas: `
 			"header header"
