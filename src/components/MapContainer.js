@@ -1,7 +1,6 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import PropTypes from "prop-types";
-import mapStyles from "../MapStyles.js";
 
 class MapContainer extends React.Component {
   onClick = name => {
@@ -15,7 +14,6 @@ class MapContainer extends React.Component {
       <React.Fragment>
         {restaurants.length > 0 && (
           <Map
-			styles={mapStyles}
             google={this.props.google}
 			zoom={12}
 			containerStyle={{ position: "relative" }}
@@ -29,12 +27,12 @@ class MapContainer extends React.Component {
                 <Marker
                   key={restaurant.id}
                   title={restaurant.name}
-                  name={restaurant.name}
+				  name={restaurant.name}
                   position={{
                     lat: restaurant.location.latitude,
                     lng: restaurant.location.longitude
                   }}
-                  onClick={e => this.onClick(restaurant.name)}
+				  onClick={e => this.onClick(restaurant.name)}
                 />
               );
             })}
