@@ -21,7 +21,8 @@ const theme = createMuiTheme({
 const styles = {
     root: {
         gridArea: "header",
-        zIndex: "2"
+		zIndex: "2",
+		height: "64px"
     },
     container: {
         height: "100vh",
@@ -32,10 +33,20 @@ const styles = {
         gridTemplateAreas: `
 			"header header"
 			"info map"
-		`
+		`,
+		"@media screen and (max-width: 745px)": {
+			gridTemplateColumns: "1fr",
+			gridTemplateRows: "64px auto 300px",
+			gridTemplateAreas: `
+			"header"
+			"info"
+			"map"
+			`
+		}
     },
     logo: {
-        height: "20px"
+		height: "20px",
+		padding: "22px 0"
     },
     restaurant: {
         gridArea: "info"
@@ -124,7 +135,7 @@ class Result extends React.Component {
             <div className={classes.container}>
                 <div className={classes.root}>
                     <ThemeProvider theme={theme}>
-                        <AppBar position="static" color="primary">
+                        <AppBar position="static" color="primary" style={{height: "100%"}}>
                             <Toolbar>
 								<Link
 									to="/"

@@ -22,16 +22,21 @@ const styles = {
         gridTemplateRows: "1fr",
         gridTemplateAreas: `
             "restaurant next"
-        `
+        `,
+        "@media screen and (max-width: 745px)": {
+            gridTemplateColumns: "calc(100vw - 40px) 40px"
+        }
     },
     info: {
         padding: "0 16px",
         gridArea: "restaurant"
     },
     card: {
-        height: "calc(100vh - 64px)",
         overflow: "auto",
-        borderRadius: "0"
+        borderRadius: "0",
+        "@media screen and (max-width: 745px)": {
+            height: "100%"
+        }
     },
     media: {
         height: 0,
@@ -50,14 +55,21 @@ const styles = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        padding: "6px 16px 10px"
+        padding: "6px 16px 36px",
+        "@media screen and (max-width: 745px)": {
+            flexDirection: "column",
+            padding: "6px 16px 16px",
+        }
     },
     button: {
-        margin: "0 10px 0 0"
+        margin: "0 10px 0 0",
+        "@media screen and (max-width: 745px)": {
+            margin: "0 0 20px"
+        }
     },
     next: {
         gridArea: "next",
-        justifySelf: "center"
+        justifySelf: "center",
     },
     arrow: {
         fontSize: "2.2em",
@@ -145,6 +157,7 @@ class Restaurant extends React.Component {
                                     </Button>
                                     <Button
                                         variant="contained"
+                                        className={classes.button}
                                         disabled={restaurant.has_table_booking}
                                         href={restaurant.url}
                                         color="primary"
