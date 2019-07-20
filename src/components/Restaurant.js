@@ -15,6 +15,9 @@ const theme = createMuiTheme({
 });
 
 const styles = {
+    info:{
+       padding: "0 16px"
+    },
     card: {
         height: "calc(100vh - 64px)",
         overflow: "auto",
@@ -24,14 +27,23 @@ const styles = {
         height: 0,
         paddingTop: "56.25%" // 16:9
     },
+    header: {
+        margin: "20px 0"
+    },
     subheader: {
         fontWeight: "600"
+    },
+    label: {
+        fontWeight: "500"
     },
     buttons: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly",
-        padding: "0 0 10px 0"
+        justifyContent: "flex-start",
+        padding: "6px 16px 10px",
+    },
+    button: {
+        margin: "0 10px 0 0"
     }
 };
 
@@ -49,15 +61,15 @@ class Restaurant extends React.Component {
                             image={restaurant.featured_image}
                             title={restaurant.name}
                         />
-                        <CardContent>
+                        <CardContent className={classes.info}>
                             <h1 className={classes.header}>
                                 {restaurant.name}
                             </h1>
                             <p className={classes.subheader}>
                                 {restaurant.cuisines}
                             </p>
-                            <p className={classes.paragraph}>
-                                User rating:{" "}
+                            <p>
+                                <span className={classes.label}>User rating:{" "}</span>
                                 <span
                                     style={{
                                         color: `#${
@@ -70,14 +82,14 @@ class Restaurant extends React.Component {
                                     5)
                                 </span>
                             </p>
-                            <p className={classes.paragraph}>
-                                Average cost for two:{" "}
+                            <p>
+                                <span className={classes.label}>Average cost for two:{" "}</span>
                                 {restaurant.average_cost_for_two}
                                 {restaurant.currency}
                             </p>
-                            <p className={classes.paragraph}>
-                                Address:
-                                <div className={classes.paragraph}>
+                            <p>
+                                <span className={classes.label}>Address:</span>
+                                <div>
                                     {restaurant.location.locality}
                                     <br />
                                     {restaurant.location.zipcode}
@@ -98,7 +110,6 @@ class Restaurant extends React.Component {
                             <Button
                                 variant="contained"
                                 disabled={restaurant.has_table_booking}
-                                className={classes.button}
                                 href={restaurant.url}
                                 color="primary"
                             >
