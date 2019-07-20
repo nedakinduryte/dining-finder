@@ -27,7 +27,7 @@ const styles = {
         height: "100vh",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: "350px 1fr",
+        gridTemplateColumns: "400px 1fr",
         gridTemplateRows: "64px 1fr",
         gridTemplateAreas: `
 			"header header"
@@ -49,7 +49,7 @@ class Result extends React.Component {
     state = {
         locationId: null,
         cuisineId: null,
-        restaurants: [], // array of 10 best evaluated restaurants
+        restaurants: [], // array of 3 randomly selected restaurants
         selected: 0 // index of the restaurant that's currently on display (index zero is default)
     };
 
@@ -107,7 +107,16 @@ class Result extends React.Component {
                 this.setState({ selected: idx });
             }
         });
-    };
+	};
+	
+	// Changing restaurant when an arrow is clicked
+	arrowOnClick = () => {
+		if (this.state.selected === (this.state.restaurants.length - 1)) {
+			this.setState({ selected: 0 })
+		} else {
+			this.setState({ selected: (this.state.selected + 1) })
+		}
+	}
 
     render() {
         const classes = this.props.classes;
@@ -132,7 +141,8 @@ class Result extends React.Component {
                 </div>
                 <Restaurant
                     className={classes.restaurant}
-                    restaurant={this.state.restaurants[this.state.selected]}
+					restaurant={this.state.restaurants[this.state.selected]}
+					arrowOnClick={this.arrowOnClick}
                 />
                 <MapContainer
                     className={classes.map}
