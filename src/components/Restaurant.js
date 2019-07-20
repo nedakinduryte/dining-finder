@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import ChevronRight from "@material-ui/icons/ChevronRight";
 import PropTypes from "prop-types";
 
 const theme = createMuiTheme({
@@ -55,7 +56,17 @@ const styles = {
         margin: "0 10px 0 0"
     },
     next: {
-        gridArea: "next"
+        gridArea: "next",
+        justifySelf: "center"
+    },
+    arrow: {
+        fontSize: "2.2em",
+        borderRadius: "50%",
+        padding: "3px",
+        margin: "36px 0 0",
+        "&:hover": {
+            backgroundColor: "rgba(0, 0, 0, 0.08)"
+		},
     }
 };
 
@@ -143,13 +154,10 @@ class Restaurant extends React.Component {
                                 </div>
                             </div>
                             <div className={classes.next}>
-                                <Button
-                                    variant="outlined"
-                                    className={classes.button}
+                                <ChevronRight
+                                    className={classes.arrow}
                                     onClick={this.props.arrowOnClick}
-                                >
-                                    >
-                                </Button>
+                                />
                             </div>
                         </div>
                     </Card>
