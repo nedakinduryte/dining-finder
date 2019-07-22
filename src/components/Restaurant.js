@@ -86,6 +86,7 @@ const styles = {
         borderRadius: "50%",
         padding: "3px",
         margin: "36px 0 0",
+        cursor: "pointer",
         "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.08)"
 		},
