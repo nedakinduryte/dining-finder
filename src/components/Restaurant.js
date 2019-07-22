@@ -28,7 +28,7 @@ const styles = {
         }
     },
     info: {
-        padding: "0 16px",
+        padding: "0",
         gridArea: "restaurant"
     },
     card: {
@@ -42,23 +42,33 @@ const styles = {
         height: 0,
         paddingTop: "56.25%" // 16:9
     },
+    cardContent: {
+        padding: "36px 16px"
+    },
     header: {
-        margin: "20px 0"
+        margin: "0 0 20px"
     },
     subheader: {
-        fontWeight: "600"
+        fontWeight: "600",
+        margin: "0 0 14px"
     },
     label: {
         fontWeight: "500"
+    },
+    paragraph: {
+        margin: "0 0 14px"
+    },
+    address: {
+        margin: "0"
     },
     buttons: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        padding: "6px 16px 36px",
+        padding: "0 16px 36px",
         "@media screen and (max-width: 745px)": {
             flexDirection: "column",
-            padding: "6px 16px 16px",
+            padding: "0 16px 16px",
         }
     },
     button: {
@@ -98,14 +108,14 @@ class Restaurant extends React.Component {
                         />
                         <div className={classes.grid}>
                             <div className={classes.info}>
-                                <CardContent>
+                                <CardContent className={classes.cardContent}>
                                     <h1 className={classes.header}>
                                         {restaurant.name}
                                     </h1>
                                     <p className={classes.subheader}>
                                         {restaurant.cuisines}
                                     </p>
-                                    <p>
+                                    <p className={classes.paragraph}>
                                         <span className={classes.label}>
                                             User rating:{" "}
                                         </span>
@@ -126,14 +136,14 @@ class Restaurant extends React.Component {
                                             / 5)
                                         </span>
                                     </p>
-                                    <p>
+                                    <p className={classes.paragraph}>
                                         <span className={classes.label}>
                                             Average cost for two:{" "}
                                         </span>
                                         {restaurant.average_cost_for_two}
                                         {restaurant.currency}
                                     </p>
-                                    <p>
+                                    <p className={classes.address}>
                                         <span className={classes.label}>
                                             Address:
                                         </span>
@@ -144,7 +154,7 @@ class Restaurant extends React.Component {
                                             <br />
                                             {restaurant.location.city}
                                         </div>
-                                    </p>
+                                    </p >
                                 </CardContent>
                                 <div className={classes.buttons}>
                                     <Button
