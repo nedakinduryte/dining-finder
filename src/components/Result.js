@@ -47,7 +47,7 @@ const styles = {
     logo: {
 		height: "20px",
 		padding: "22px 0"
-    },
+	},
     restaurant: {
         gridArea: "info"
     },
@@ -61,8 +61,10 @@ class Result extends React.Component {
         locationId: null,
         cuisineId: null,
         restaurants: [], // array of 3 randomly selected restaurants
-        selected: 0 // index of the restaurant that's currently on display (index zero is default)
-    };
+        selected: 0, // index of the restaurant that's currently on display (index zero is default)
+		lat: null,
+		lng: null
+	};
 
     // getting location ID & cuisine ID from the query string
     componentDidMount() {
@@ -122,11 +124,15 @@ class Result extends React.Component {
 	
 	// Changing restaurant when an arrow is clicked
 	arrowOnClick = () => {
-		if (this.state.selected === (this.state.restaurants.length - 1)) {
-			this.setState({ selected: 0 })
-		} else {
-			this.setState({ selected: (this.state.selected + 1) })
+		let selected = 0;
+		if (this.state.selected !== (this.state.restaurants.length - 1)) {
+			selected = this.state.selected + 1;
 		}
+
+		const lat = this.state.restaurants[selected].location.latitude;
+		const lng = this.state.restaurants[selected].location.longitude;
+		
+		this.setState({ selected, lat, lng });
 	}
 
     render() {
@@ -156,7 +162,9 @@ class Result extends React.Component {
 					arrowOnClick={this.arrowOnClick}
                 />
                 <MapContainer
-                    className={classes.map}
+					className={classes.map}
+					lat={this.state.lat}
+					lng={this.state.lng}
                     restaurants={this.state.restaurants}
                     markerOnClick={this.markerOnClick}
                 />

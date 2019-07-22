@@ -17,6 +17,7 @@ class MapContainer extends React.Component {
             google={this.props.google}
 			zoom={12}
 			containerStyle={{ position: "relative" }}
+			center={{ lat: this.props.lat, lng: this.props.lng }}
             initialCenter={{
               lat: restaurants[0].location.latitude,
               lng: restaurants[0].location.longitude
@@ -28,7 +29,7 @@ class MapContainer extends React.Component {
                   key={restaurant.id}
                   title={restaurant.name}
 				  name={restaurant.name}
-                  position={{
+				  position={{
                     lat: restaurant.location.latitude,
                     lng: restaurant.location.longitude
                   }}
