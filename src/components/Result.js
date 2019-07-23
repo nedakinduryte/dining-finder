@@ -22,8 +22,10 @@ const styles = {
     root: {
         gridArea: "header",
 		zIndex: "2",
-		height: "64px"
-    },
+		height: "64px",
+		display: "flex",
+		flexDirection: "row"
+	},
     container: {
         height: "100vh",
         width: "100%",
@@ -43,10 +45,21 @@ const styles = {
 			"map"
 			`
 		}
-    },
+	},
     logo: {
 		height: "20px",
 		padding: "22px 0"
+	},
+	link: {
+		marginLeft: "auto",
+		textDecoration: "none"
+	},
+	hyperlink: {
+		color: "#fff",
+		fontWeight: "500",
+		"&:hover": {
+			textDecoration: "underline"
+		}
 	},
     restaurant: {
         gridArea: "info"
@@ -62,8 +75,8 @@ class Result extends React.Component {
         cuisineId: null,
         restaurants: [], // array of 3 randomly selected restaurants
         selected: 0, // index of the restaurant that's currently on display (index zero is default)
-		lat: null,
-		lng: null
+		lat: null, // used to recenter the marker on a map when restaurants change
+		lng: null // used to recenter the marker on a map when restaurants change
 	};
 
     // getting location ID & cuisine ID from the query string
@@ -141,7 +154,7 @@ class Result extends React.Component {
             <div className={classes.container}>
                 <div className={classes.root}>
                     <ThemeProvider theme={theme}>
-                        <AppBar position="static" color="primary" style={{height: "100%"}}>
+                        <AppBar position="static" color="primary" style={{height: "100%", boxSizing: "border-box"}}>
                             <Toolbar>
 								<Link
 									to="/"
@@ -151,6 +164,12 @@ class Result extends React.Component {
 										alt="logo"
 										src={logo}
 									/>
+								</Link>
+								<Link
+									to="/"
+									className={classes.link}
+								>
+									<p className={classes.hyperlink}>Back to search</p>
 								</Link>
                             </Toolbar>
                         </AppBar>
