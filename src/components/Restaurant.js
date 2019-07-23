@@ -43,7 +43,7 @@ const styles = {
         paddingTop: "56.25%" // 16:9
     },
     cardContent: {
-        padding: "36px 16px"
+        padding: "36px 16px",
     },
     header: {
         margin: "0 0 20px"
@@ -68,7 +68,7 @@ const styles = {
         padding: "0 16px 36px",
         "@media screen and (max-width: 745px)": {
             flexDirection: "column",
-            padding: "0 16px 16px",
+            padding: "0 16px 16px"
         }
     },
     button: {
@@ -194,7 +194,8 @@ class Restaurant extends React.Component {
 }
 
 Restaurant.propTypes = {
-    restaurant: PropTypes.object.isRequired
+    restaurant: PropTypes.object.isRequired,
+    arrowOnClick: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Restaurant);
