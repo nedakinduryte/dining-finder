@@ -205,7 +205,7 @@ class Cuisine extends React.Component {
 }
 
 Cuisine.propTypes = {
-	locationId: PropTypes.number.isRequired,
+	locationId: PropTypes.number,
 	handleCuisineSelection: PropTypes.func.isRequired
 }
 
