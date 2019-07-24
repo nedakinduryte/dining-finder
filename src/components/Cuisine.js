@@ -12,24 +12,24 @@ const API_KEY = "2d0e89daf27dd516eb7dcf5208bd83de";
 
 const styles = createStyles({
     root: {
-		width: "100%",
-		alignSelf: "end",
-		padding: "0 0 30px",
-		"& label.Mui-focused": {
-			color: "#34495e"
-		},
-		"& .MuiOutlinedInput-root": {
+        width: "100%",
+        alignSelf: "end",
+        padding: "0 0 30px",
+        "& label.Mui-focused": {
+            color: "#34495e"
+        },
+        "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
-				borderColor: "#34495e",
-				border: "1px solid #34495e"
+                borderColor: "#34495e",
+                border: "1px solid #34495e"
             }
-		},
-		"@media screen and (max-width: 745px)": {
-			width: "calc(100vw - 40px)",
-			alignSelf: "center",
-			padding: "0 20px 20px"
+        },
+        "@media screen and (max-width: 745px)": {
+            width: "calc(100vw - 40px)",
+            alignSelf: "center",
+            padding: "0 20px 20px"
         }
-	},
+    },
     container: {
         position: "relative"
     },
@@ -80,7 +80,7 @@ function renderInputComponent(inputProps) {
 
     return (
         <TextField
-			variant="outlined"
+            variant="outlined"
             fullWidth
             disabled={locationId === null}
             InputProps={{
@@ -205,8 +205,8 @@ class Cuisine extends React.Component {
 }
 
 Cuisine.propTypes = {
-	locationId: PropTypes.number,
-	handleCuisineSelection: PropTypes.func.isRequired
-}
+    locationId: PropTypes.number,
+    handleCuisineSelection: PropTypes.func.isRequired
+};
 
 export default withStyles(styles)(Cuisine);

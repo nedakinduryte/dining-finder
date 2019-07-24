@@ -43,7 +43,7 @@ const styles = {
         paddingTop: "56.25%" // 16:9
     },
     cardContent: {
-        padding: "36px 16px",
+        padding: "36px 16px"
     },
     header: {
         margin: "0 0 20px"
@@ -79,7 +79,7 @@ const styles = {
     },
     next: {
         gridArea: "next",
-        justifySelf: "center",
+        justifySelf: "center"
     },
     arrow: {
         fontSize: "2.2em",
@@ -89,7 +89,7 @@ const styles = {
         cursor: "pointer",
         "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.08)"
-		},
+        }
     }
 };
 
@@ -155,7 +155,7 @@ class Restaurant extends React.Component {
                                             <br />
                                             {restaurant.location.city}
                                         </span>
-                                    </p >
+                                    </p>
                                 </CardContent>
                                 <div className={classes.buttons}>
                                     <Button
@@ -169,7 +169,11 @@ class Restaurant extends React.Component {
                                     <Button
                                         variant="contained"
                                         className={classes.button}
-                                        disabled={restaurant.has_table_booking ? true : false}
+                                        disabled={
+                                            restaurant.has_table_booking
+                                                ? true
+                                                : false
+                                        }
                                         href={restaurant.url}
                                         color="primary"
                                     >
