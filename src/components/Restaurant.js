@@ -148,13 +148,13 @@ class Restaurant extends React.Component {
                                         <span className={classes.label}>
                                             Address:
                                         </span>
-                                        <div>
+                                        <span>
                                             {restaurant.location.locality}
                                             <br />
                                             {restaurant.location.zipcode}
                                             <br />
                                             {restaurant.location.city}
-                                        </div>
+                                        </span>
                                     </p >
                                 </CardContent>
                                 <div className={classes.buttons}>
