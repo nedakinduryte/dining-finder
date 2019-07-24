@@ -52,6 +52,7 @@ const styles = createStyles({
     },
 });
 
+// Renders suggestions list
 function renderSuggestion(suggestion, { query, isHighlighted }) {
     const matches = match(suggestion.name, query);
     const parts = parse(suggestion.name, matches);
@@ -72,6 +73,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
     );
 }
 
+// Renders textfield
 function renderInputComponent(inputProps) {
     const { classes, inputRef = () => {}, ref, ...other } = inputProps;
 
@@ -97,10 +99,11 @@ class Location extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",
-            suggestions: []
+            value: "", // typed value
+            suggestions: []  // suggestion list from API
         };
 
+        // delays suggestions before suggestion fetching
         this.debouncedLoadSuggestions = _.debounce(this.loadSuggestions, 200);
     }
 
@@ -129,14 +132,14 @@ class Location extends React.Component {
 
     onChange = (event, { newValue }) => this.setState({ value: newValue });
 
-    // Autosuggest will call this function every time you need to update suggestions.
+    // Autosuggest will call this function every time you need to update suggestions
     onSuggestionsFetchRequested = ({ value }) =>
         this.debouncedLoadSuggestions(value);
 
-    // Autosuggest will call this function every time you need to clear suggestions.
+    // Autosuggest will call this function every time you need to clear suggestions
     onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
-    // Getting city id.
+    // Getting city id
     handleSelection = (event, { suggestion }) => {
         this.props.handleLocationSelection(suggestion.id);
     };
