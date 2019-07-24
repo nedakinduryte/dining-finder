@@ -47,8 +47,8 @@ class MapContainer extends React.Component {
 MapContainer.propTypes = {
 	restaurants: PropTypes.array.isRequired,
 	markerOnClick: PropTypes.func.isRequired,
-	lat: PropTypes.string.isRequired,
-	lng: PropTypes.string.isRequired
+	lat: PropTypes.string,
+	lng: PropTypes.string
 }
 
 export default GoogleApiWrapper({

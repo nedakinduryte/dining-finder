@@ -194,7 +194,7 @@ class Restaurant extends React.Component {
 }
 
 Restaurant.propTypes = {
-    restaurant: PropTypes.object.isRequired,
+    restaurant: PropTypes.object,
     arrowOnClick: PropTypes.func.isRequired
 };
 
