@@ -169,7 +169,7 @@ class Restaurant extends React.Component {
                                     <Button
                                         variant="contained"
                                         className={classes.button}
-                                        disabled={restaurant.has_table_booking}
+                                        disabled={restaurant.has_table_booking ? true : false}
                                         href={restaurant.url}
                                         color="primary"
                                     >
