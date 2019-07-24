@@ -3,9 +3,6 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import PropTypes from "prop-types";
 
 class MapContainer extends React.Component {
-  onClick = name => {
-    this.props.markerOnClick(name);
-  };
 
   render() {
     const restaurants = this.props.restaurants;
@@ -23,17 +20,17 @@ class MapContainer extends React.Component {
               lng: restaurants[0].location.longitude
 			}}
           >
-            {restaurants.map(restaurant => {
+            {restaurants.map((restaurant, index) => {
               return (
                 <Marker
                   key={restaurant.id}
                   title={restaurant.name}
-				  name={restaurant.name}
+				          name={restaurant.name}
 				  position={{
                     lat: restaurant.location.latitude,
                     lng: restaurant.location.longitude
                   }}
-				  onClick={e => this.onClick(restaurant.name)}
+				  onClick={e => this.props.markerOnClick(restaurant.id, index)}
                 />
               );
             })}
