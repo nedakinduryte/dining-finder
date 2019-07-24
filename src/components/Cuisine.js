@@ -149,14 +149,14 @@ class Cuisine extends React.Component {
 
     onChange = (event, { newValue }) => this.setState({ value: newValue });
 
-    // Autosuggest will call this function every time you need to update suggestions.
+    // Autosuggest will call this function every time you need to update suggestions
     onSuggestionsFetchRequested = ({ value }) =>
         this.setState({ suggestions: this.getSuggestions(value) });
 
-    // Autosuggest will call this function every time you need to clear suggestions.
+    // Autosuggest will call this function every time you need to clear suggestions
     onSuggestionsClearRequested = () => this.setState({ suggestions: [] });
 
-    // getting cuisine id.
+    // Getting cuisine id
     handleSelection = (event, { suggestion }) => {
         this.props.handleCuisineSelection(suggestion.cuisine.cuisine_id);
     };

@@ -103,8 +103,8 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            locationId: null,
-            cuisineId: null
+            locationId: null, // to be sent to the API
+            cuisineId: null // to be sent to the API
         };
     }
 

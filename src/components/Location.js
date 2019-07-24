@@ -52,7 +52,6 @@ const styles = createStyles({
     },
 });
 
-// Renders suggestions list
 function renderSuggestion(suggestion, { query, isHighlighted }) {
     const matches = match(suggestion.name, query);
     const parts = parse(suggestion.name, matches);
@@ -73,7 +72,6 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
     );
 }
 
-// Renders textfield
 function renderInputComponent(inputProps) {
     const { classes, inputRef = () => {}, ref, ...other } = inputProps;
 
