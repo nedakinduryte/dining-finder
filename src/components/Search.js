@@ -22,7 +22,7 @@ const styles = {
         "&:hover": {
             backgroundColor: "#5c6d7e"
         },
-        "@media screen and (max-width: 745px)": {
+        "@media screen and (max-width: 500px)": {
             width: "calc(100vw - 40px)",
             padding: "10px",
             margin: "0 0 20px",
@@ -66,10 +66,10 @@ const styles = {
             alignSelf: "start",
             margin: "100px 0 0"
         },
-        "@media screen and (max-width: 745px)": {
+        "@media screen and (max-width: 500px)": {
             width: "calc(100vw - 40px)",
             margin: "0",
-            padding: "20px",
+            padding: "20px 0",
             justifySelf: "center",
             backgroundColor: "transparent"
         }
@@ -77,7 +77,7 @@ const styles = {
     mobileForm: {
         display: "flex",
         flexDirection: "column",
-        "@media screen and (max-width: 745px)": {
+        "@media screen and (max-width: 500px)": {
             alignSelf: "center",
             backgroundColor: "#fff"
         }
@@ -88,7 +88,7 @@ const styles = {
         fontWeight: "700",
         margin: "0",
         padding: "0 0 30px",
-        "@media screen and (max-width: 745px)": {
+        "@media screen and (max-width: 500px)": {
             color: "#fff",
             padding: "0 0 15px"
         }

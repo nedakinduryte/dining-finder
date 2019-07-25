@@ -24,7 +24,7 @@ const styles = createStyles({
                 border: "1px solid #34495e"
             }
         },
-        "@media screen and (max-width: 745px)": {
+        "@media screen and (max-width: 500px)": {
             width: "calc(100vw - 40px)",
             alignSelf: "center",
             padding: "0 20px 20px"
