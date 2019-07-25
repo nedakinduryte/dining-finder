@@ -19,9 +19,10 @@ const styles = {
     grid: {
         display: "grid",
         gridTemplateColumns: "350px 50px",
-        gridTemplateRows: "1fr",
+        gridTemplateRows: "1fr 72px",
         gridTemplateAreas: `
             "restaurant next"
+            "buttons buttons"
         `,
         "@media screen and (max-width: 745px)": {
             gridTemplateColumns: "calc(100vw - 40px) 40px"
@@ -61,6 +62,9 @@ const styles = {
     },
     address: {
         margin: "0"
+    },
+    gridButtons: {
+        gridArea: "buttons"
     },
     buttons: {
         display: "flex",
@@ -158,6 +162,8 @@ class Restaurant extends React.Component {
                                         </span>
                                     </p>
                                 </CardContent>
+                            </div>
+                            <div className={classes.gridButtons}>
                                 <div className={classes.buttons}>
                                     <Button
                                         variant="contained"
