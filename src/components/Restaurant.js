@@ -35,8 +35,9 @@ const styles = {
         overflow: "auto",
         borderRadius: "0",
         "@media screen and (max-width: 745px)": {
-            height: "100%"
-        }
+            height: "100%",
+            overflow: "none"
+        },
     },
     media: {
         height: 0,
