@@ -38,7 +38,7 @@ const styles = {
 		`,
         "@media screen and (max-width: 745px)": {
             gridTemplateColumns: "1fr",
-            gridTemplateRows: "64px auto 300px",
+            gridTemplateRows: "64px 100% 300px",
             gridTemplateAreas: `
 			"header"
 			"info"
