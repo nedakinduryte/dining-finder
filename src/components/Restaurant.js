@@ -82,6 +82,9 @@ const styles = {
             margin: "0 0 20px"
         }
     },
+    link: {
+        textDecoration: "none"
+    },
     next: {
         gridArea: "next",
         justifySelf: "center"
@@ -165,27 +168,29 @@ class Restaurant extends React.Component {
                             </div>
                             <div className={classes.gridButtons}>
                                 <div className={classes.buttons}>
-                                    <Button
-                                        variant="contained"
-                                        className={classes.button}
-                                        href={restaurant.menu_url}
-                                        color="primary"
-                                    >
-                                        See menu
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        className={classes.button}
-                                        disabled={
-                                            restaurant.has_table_booking
-                                                ? true
-                                                : false
-                                        }
-                                        href={restaurant.url}
-                                        color="primary"
-                                    >
-                                        Book a table
-                                    </Button>
+                                    <a className={classes.link} href={restaurant.menu_url} target="_blank" rel="noopener noreferrer">
+                                        <Button
+                                            variant="contained"
+                                            className={classes.button}
+                                            color="primary"
+                                        >
+                                            See menu
+                                        </Button>
+                                    </a>
+                                    <a className={classes.link} href={restaurant.url} target="_blank" rel="noopener noreferrer">
+                                        <Button
+                                            variant="contained"
+                                            className={classes.button}
+                                            disabled={
+                                                restaurant.has_table_booking
+                                                    ? true
+                                                    : false
+                                            }
+                                            color="primary"
+                                        >
+                                                Book a table
+                                        </Button>
+                                    </a>
                                 </div>
                             </div>
                             <div className={classes.next}>
