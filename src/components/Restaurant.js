@@ -38,7 +38,7 @@ const styles = {
         "@media screen and (max-width: 745px)": {
             height: "100%",
             overflow: "none"
-        },
+        }
     },
     media: {
         height: 0,
@@ -168,7 +168,12 @@ class Restaurant extends React.Component {
                             </div>
                             <div className={classes.gridButtons}>
                                 <div className={classes.buttons}>
-                                    <a className={classes.link} href={restaurant.menu_url} target="_blank" rel="noopener noreferrer">
+                                    <a
+                                        className={classes.link}
+                                        href={restaurant.menu_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
                                         <Button
                                             variant="contained"
                                             className={classes.button}
@@ -177,7 +182,12 @@ class Restaurant extends React.Component {
                                             See menu
                                         </Button>
                                     </a>
-                                    <a className={classes.link} href={restaurant.url} target="_blank" rel="noopener noreferrer">
+                                    <a
+                                        className={classes.link}
+                                        href={restaurant.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
                                         <Button
                                             variant="contained"
                                             className={classes.button}
@@ -188,7 +198,7 @@ class Restaurant extends React.Component {
                                             }
                                             color="primary"
                                         >
-                                                Book a table
+                                            Book a table
                                         </Button>
                                     </a>
                                 </div>
