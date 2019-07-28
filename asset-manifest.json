@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/nedakinduryte/dining-finder/static/css/main.628a625c.chunk.css",
-    "main.js": "/nedakinduryte/dining-finder/static/js/main.98a4c15d.chunk.js",
-    "main.js.map": "/nedakinduryte/dining-finder/static/js/main.98a4c15d.chunk.js.map",
-    "runtime~main.js": "/nedakinduryte/dining-finder/static/js/runtime~main.c6c59d24.js",
-    "runtime~main.js.map": "/nedakinduryte/dining-finder/static/js/runtime~main.c6c59d24.js.map",
-    "static/js/2.26e334b2.chunk.js": "/nedakinduryte/dining-finder/static/js/2.26e334b2.chunk.js",
-    "static/js/2.26e334b2.chunk.js.map": "/nedakinduryte/dining-finder/static/js/2.26e334b2.chunk.js.map",
-    "index.html": "/nedakinduryte/dining-finder/index.html",
-    "precache-manifest.5b1c8e29ad868ef9f24c3b19f00bc2ea.js": "/nedakinduryte/dining-finder/precache-manifest.5b1c8e29ad868ef9f24c3b19f00bc2ea.js",
-    "service-worker.js": "/nedakinduryte/dining-finder/service-worker.js",
-    "static/css/main.628a625c.chunk.css.map": "/nedakinduryte/dining-finder/static/css/main.628a625c.chunk.css.map",
-    "static/media/background.jpg": "/nedakinduryte/dining-finder/static/media/background.4d69c223.jpg",
-    "static/media/light-logo.png": "/nedakinduryte/dining-finder/static/media/light-logo.b1dc3f7e.png"
+    "main.css": "/dining-finder/static/css/main.628a625c.chunk.css",
+    "main.js": "/dining-finder/static/js/main.c77fd1bb.chunk.js",
+    "main.js.map": "/dining-finder/static/js/main.c77fd1bb.chunk.js.map",
+    "runtime~main.js": "/dining-finder/static/js/runtime~main.1d0507dc.js",
+    "runtime~main.js.map": "/dining-finder/static/js/runtime~main.1d0507dc.js.map",
+    "static/js/2.26e334b2.chunk.js": "/dining-finder/static/js/2.26e334b2.chunk.js",
+    "static/js/2.26e334b2.chunk.js.map": "/dining-finder/static/js/2.26e334b2.chunk.js.map",
+    "index.html": "/dining-finder/index.html",
+    "precache-manifest.56f2d0800e28ea4ef70c460fcae961d9.js": "/dining-finder/precache-manifest.56f2d0800e28ea4ef70c460fcae961d9.js",
+    "service-worker.js": "/dining-finder/service-worker.js",
+    "static/css/main.628a625c.chunk.css.map": "/dining-finder/static/css/main.628a625c.chunk.css.map",
+    "static/media/background.jpg": "/dining-finder/static/media/background.4d69c223.jpg",
+    "static/media/light-logo.png": "/dining-finder/static/media/light-logo.b1dc3f7e.png"
   }
 }
